@@ -1,6 +1,6 @@
 <?php
     session_start(); 
-    include ("conexion.php");
+    include ("../bd/conexion.php");
     $Correo = $_POST['Correo'];
     $Contra= $_POST['Contra'];
     $consulta = $link->prepare('SELECT * from viajero where

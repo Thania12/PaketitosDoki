@@ -1,6 +1,12 @@
-<!doctype html>
-<html lang="zxx">
-<html>
+<?php
+session_start();
+require_once('../funcionesUsuario/funcionesUsuario.php');
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+   registro();
+}
+require_once('../bd/conexion.php');
+?>
+
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -88,8 +94,9 @@
 				<div class="col-lg-7 story-gd pl-lg-4">
 						<div class="form-inner-cont">
 						<!--FORM PARA REGISTRO DE USUARIOS AQUI VA EL METHOD Y ESO-->
+						
 						<!-- CADA INPUT TIENE UN ID Y NAME-->
-							<form  class="input-field" id="formularioUsuario">
+							<form  class="input-field" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method= "POST" id="formularioUsuario">
 							  <div class="singup"> 
 								<div class="title-content text-center">
 									<h6 class="sub-title">Crea tu cuenta de Usuario </h6>
@@ -110,6 +117,13 @@
 											<input type="text" class="formulario__grupo-input" id="Apellido" name="Apellido" >
 										     </div>
 											  </div>
+											  <!-- Grupo Edad con validacion --> 
+											<div class="formulario__grupo" id="grupo__Edad">
+											<label for="Nombre" class="formulario__label"> Edad </label>
+											<div class="formulario__grupo-input">
+											<input type="text" class="formulario__grupo-input" id="Edad" name="Edad" >
+										     </div>
+											  </div>
 											<!-- Grupo Sexo con validacion --> 
 											<div class="formulario__grupo" id="grupo__Sexo">
 											<label for="Nombre" class="formulario__label"> Sexo </label>
@@ -128,7 +142,7 @@
 											<input type="text" class="formulario__grupo-input" id="Correo" class="email" name = "Correo" >
 											</div>
 											  </div>
-											<!-- Grupo Contra con validacion --> 
+											<!-- Grupo Contraseña con validacion --> 
 											<div class="formulario__grupo" id="grupo__Contrasena">
 											<label for="Nombre" class="formulario__label"> Contraseña </label>
 											<div class="formulario__grupo-input">
@@ -143,11 +157,10 @@
 										 	</div>
 											</div>
 									        <!-- Grupo Estado con validacion --> 
-											<div class="formulario__grupo" id="grupo__Estado">
-											<label for="Nombre" class="formulario__label"> ¿En que Estado vive? </label>
-											<div class="formulario__grupo-input">
-											<input type="text" list="items2" class="formulario__grupo-input" id="Estado_origen" name = "Estado_origen">
-											<datalist id="items2">
+											<div class="formulario_grupo" id="grupo_Nombre">
+											<label for="Nombre" class="formulario__label"> Seleccionar Origen</label>
+											<div class="">
+											<select name="Estado_Origen" id="Estado_Origen" class="form-control" style="height: 60px; font-size:14px; line-height: 1.5">
 											<option value ="Aguascalientes"> Aguascalientes </option>
 											<option value ="Baja California"> Baja California </option>
 											<option value ="Baja California Sur "> Baja California Sur </option>
@@ -180,17 +193,17 @@
 											<option value ="Veracruz"> Veracruz </option>
 											<option value ="Yucatan"> Yucatan</option>
 											<option value ="Zacatecas"> Zacatecas </option>
-
-											</datalist>
-											</div>				
-											</div>
+                                            </select>
+                                            </div>
+                                            
+                                            </div>
 										   <!-- Grupo boton --> 
 											<div class="formulario__grupo" id="formulario__grupo-btn-enviar">
 										   <label for="Espacio" class="formulario__label"> </label> 
 										   <input type="submit" id="register"  name="register" value="Registrar" /> 
 										   </div>
 									
-										   <p>       ¿Ya tienes un cuenta?<a href="../viajero/loginV.php"> Iniciar Sesión</a></p>
+										   <p>       ¿Ya tienes un cuenta?<a href="loginU.php"> Iniciar Sesión</a></p>
 											<p class="warnings" id="warnings"></p>   
 											</div>						
 											           </div>

@@ -43,9 +43,9 @@
                         <li class="nav-item">
                             <ul>
                                 <li><a class="nav-link" href="enviosSolicitados.php">Envios Solicitados</a></li>
-                                <li><a class="nav-link" href="envios.php">Envios</a></li>
+                                <li><a class="nav-link" href="../envios.php">Envios</a></li>
                                 <li><a class="nav-link"
-                                        href="../klorofil-free-dashboard-template-v2.0/template/page-login.html">Salir</a>
+                                        href="klorofil-free-dashboard-template-v2.0/template/page-login.html">Salir</a>
                                 </li>
                             </ul>
                         </li>

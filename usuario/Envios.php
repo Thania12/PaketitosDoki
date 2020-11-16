@@ -1,6 +1,8 @@
+<?php
+session_start();
+require_once('../bd/conexion.php');
 
-<!Doctype html>
-<html>
+?>
 
 <head>
 	<!-- Required meta tags -->
@@ -10,7 +12,7 @@
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script> 
 	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
 	
-	<link rel="stylesheet" href="estilo.css">
+	<link rel="stylesheet" href="../estilo.css">
 	<title>Envios</title>
 	<!-- Template CSS -->
 	<link rel="stylesheet" href="../assets/css/style-starter.css">
@@ -26,7 +28,7 @@
 		<!--/nav-->
 		<nav class="navbar navbar-expand-lg navbar-light px-lg-0 py-0 px-3 stroke">
 			<div class="container">
-				<h1><a class="navbar-brand" href="index.php"> Paquetitos Doki <span>
+				<h1><a class="navbar-brand" href="../index.php"> Paquetitos Doki <span>
 				</span></a></h1>
 				<!-- if logo is image enable this   
 						<a class="navbar-brand" href="#index.php">
@@ -45,7 +47,7 @@
 								<ul>
 									<li><a class="nav-link" href="enviosSolicitados.php">Solicitudes</a></li>
 									<li><a class="nav-link" href="misenvios.php">Mis Envios</a></li>
-									<li><a class="nav-link" href="klorofil-free-dashboard-template-v2.0/template/page-login.html">Salir</a></li>
+									<li><a class="nav-link" href="../klorofil-free-dashboard-template-v2.0/template/page-login.html">Salir</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -63,18 +65,17 @@
 							<!--form para registro del viajero-->
 								<!--Todo separado por grupos para el JQuery-->
 						<div class="form-inner-cont">
-							<form  class="input-field" action="altaenvios.php" method="POST">
+							<form  class="input-field" action="../funcionesUsuario/funcionesEnvios.php" method= "POST" id="formulario">
 							  <div class="singup"> 
-								<div class="title-content text-center">
-									<h6 class="sub-title">Crear Nuevo Envio</h6>
-									
-								</div>
+							  <h2><a> ¡Hola! <?php echo $_SESSION['Nombre']?> </a></h2>
+									<h3 class="sub-title"> Registra tu nuevo envio </h3>
+									</div>
 								<div class="d-grid align-form-map mt-lg-5 mt-4">
 										<!-- Grupo Nombre con validacion --> 
 											<div class="formulario__grupo" id="grupo__Nombre">
 											<label for="Nombre" class="formulario__label"> Seleccionar Destino</label>
 											<div class="">
-											<select name="destino" id="" class="form-control" style="height: 60px; font-size:14px; line-height: 1.5">
+											<select name="Estado_Origen" id="" class="form-control" style="height: 60px; font-size:14px; line-height: 1.5">
 											<option value ="Aguascalientes"> Aguascalientes </option>
 											<option value ="Baja California"> Baja California </option>
 											<option value ="Baja California Sur "> Baja California Sur </option>
@@ -115,7 +116,7 @@
                                             <div class="formulario__grupo" id="grupo__Nombre">
 											<label for="Nombre" class="formulario__label"> Seleccionar Origen</label>
 											<div class="">
-											<select name="origen" id="" class="form-control" style="height: 60px; font-size:14px; line-height: 1.5">
+											<select name="Estado_Destino" id="" class="form-control" style="height: 60px; font-size:14px; line-height: 1.5">
 											<option value ="Aguascalientes"> Aguascalientes </option>
 											<option value ="Baja California"> Baja California </option>
 											<option value ="Baja California Sur "> Baja California Sur </option>
@@ -155,49 +156,50 @@
                                             
                                             
 
-                                            <!-- Grupo Edad con validacion --> 
+                                            <!-- Grupo Fecha con validacion --> 
 											 <div class="formulario__grupo" id="grupo__Edad">
 											 <label for="Nombre" class="formulario__label"> Fecha  </label>
 											 <div class="formulario__grupo-input">
-											<input type="date" class="formulario__grupo-input"  id="Edad" name="fecha">
+											<input type="date" class="formulario__grupo-input"  id="Edad" name="Fecha_Envio">
 											<i class="formulario__validacion-estado fas fa-times-circle"></i>
 											</div>
                                             </div>
-                                            
+                                         <!-- Grupo Fecha con validacion --> 
                                             <div class="formulario__grupo" id="grupo__Edad">
 											 <label for="Nombre" class="formulario__label"> Comentarios  </label>
 											 <div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input"  id="Edad" name="comentarios">
+											<input type="text" class="formulario__grupo-input"  id="Comentario" name="Comentario">
 											<i class="formulario__validacion-estado fas fa-times-circle"></i>
 											</div>
 											</div>
-
+											<?php
+											$id_cliente = isset($_SESSION['ID_Cliente']) ? $_SESSION['ID_Cliente'] : '';
+											?>
+											
+											 <div class="formulario__grupo" id="grupo__id">
+											 <label for="Nombre" class="formulario__label"> Tu Clave de Usuario : </label>
+											 <div class="formulario__grupo-input">
+											<input class="formulario__grupo-input"  id="ID_Cliente" name="ID_Cliente" value="<?php echo $id_cliente; ?>"/>
 											
 											<!-- Grupo boton --> 
 											<div class="formulario__grupo" id="formulario__grupo-btn-enviar">
-										 
-										   <input type="submit" id="register"  name="envios" value="Registrar" /> 
-										 
+										   <label for="Espacio" class="formulario__label"> </label> 
+										   <input type="submit" id="register"  name="register" value="Registrar" /> 
+										  <p class="formulario__mensaje-exito" id="formulario__mensaje-exito"> Registroso exitoso </p>
 										  </div>
-									
-										  
-											</div>
-	
-											<br> <br> <br>
-										
-                                            </div>
-                                            
-                                            </div>
-                                            
-                                            </div> 
+												</div>
+												   </div>
+												       </div>
+                                                        </div>
+                                                            </div> 
+															</div>
                                             <div class="col-md-4 text-center">
                                                 <img style="width: 400px; height: 300px;" src="paqueteria.jpg" alt="">
                                             </div>
                                             </div>
                                         
 										</form>
-											
-											
+									        </form>
 			
 												<style> 
 													input[type=button] {
@@ -248,7 +250,7 @@
 						<div class="right-side">
 							<div class="row sub-columns">
 								<div class="col-lg-4 col-md-6 sub-one-left pr-lg-4">
-									<h2><a class="navbar-brand" href="index.php">Paquetitos<span> Doki </span></a></h2>
+									<h2><a class="navbar-brand" href="../index.php">Paquetitos<span> Doki </span></a></h2>
 									<!-- if logo is image enable this   
 									<a class="navbar-brand" href="#index.php">
 										<img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
@@ -277,7 +279,7 @@
 											<li><a href="viajesSolicitados.php"><span
 														class="fa fa-angle-right mr-2"></span>Solicitar Envio  </a>
 											</li>
-											<li><a href="misviajes.php"><span
+											<li><a href="misenvios.php"><span
 														class="fa fa-angle-right mr-2"></span>Mis Envios </a></li>
 											
 										</ul>
@@ -302,7 +304,7 @@
 						<ul class="columns text-lg-right">
 							<li><a href="#"> Politica de Privacidad </a>
 							</li>
-							<li><a href="about.php"> Acerca de nosotros </a>
+							<li><a href="../about.php"> Acerca de nosotros </a>
 							</li>
 						</ul>
 					</div>
@@ -355,4 +357,4 @@ $(function () {
 </script>
 <!--/scroll-down-JS-->
 <!--//pop-up-box-->
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>

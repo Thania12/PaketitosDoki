@@ -15,5 +15,5 @@ $registros = mysqli_query($conexion,"UPDATE nuevo_envio set Comentario = 'En Cam
 
 mysqli_close($conexion);
 
-header("Location: misviajes.php");
+header("Location: misenvios.php");
 ?>
