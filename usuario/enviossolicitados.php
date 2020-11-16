@@ -90,7 +90,7 @@
                                                         Comentarios</th>
 
                                                     <?php
-								$conexion=mysqli_connect("localhost","root","","bdnegocioss") or
+								$conexion=mysqli_connect("localhost","root","","dokibase") or
 								die("Problemas con la conexión");
 
 								//Aqui se le tiene que agregar el ID del usuario logueado en un where

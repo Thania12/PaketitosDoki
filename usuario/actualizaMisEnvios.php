@@ -1,5 +1,5 @@
 <?php
-$conexion=mysqli_connect("localhost","root","","bdnegocioss") or
+$conexion=mysqli_connect("localhost","root","","dokibase") or
     die("Problemas con la conexión");
 
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['ID_Viajero'] =$_POST[ID_Viajero];
-$conexion=mysqli_connect("localhost","root","","bdnegocioss") or
+$conexion=mysqli_connect("localhost","root","","dokibase") or
     die("Problemas con la conexión");
 
 mysqli_query($conexion,"INSERT into nuevo_viaje(Estado_Origen, Estado_Destino, Fecha_Viaje, ID_Viajero) values 

@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname= "bdnegocioss";
+$dbname= "dokibase";
 try {
     $link= new PDO("mysql:host=$servername;dbname=bdnegocioss", $username, $password);
     // set the PDO error mode to exception

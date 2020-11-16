@@ -6,5 +6,5 @@ mysqli_query($link,"INSERT INTO nuevo_envio (Estado_Origen, Estado_Destino, Fech
 
 mysqli_close($link);
 
-header("Location: envios.php");
+header("Location: Envios.php");
 ?>

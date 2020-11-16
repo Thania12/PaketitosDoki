@@ -83,7 +83,7 @@ require_once('../bd/conexion.php');
                                                     <th>Destino</th>
                                                     <th>Fecha</th>
                                                     <?php
-													$conexion=mysqli_connect("localhost","root","","bdnegocioss") or
+													$conexion=mysqli_connect("localhost","root","","dokibase") or
 													die("Problemas con la conexión");
 
                                                     $registros=mysqli_query($conexion,"SELECT ne.ID_NEnvio AS ID ,c.Nombre AS Nombre, ne.Estado_Destino AS Destino, ne.Fecha_Envio AS Fecha, ne.Comentario AS Comentario FROM nuevo_envio ne INNER JOIN cliente c on c.ID_Cliente = ne.ID_Cliente WHERE ne.Comentario != ('En Camino') && ne.Comentario != ('Entregado')")

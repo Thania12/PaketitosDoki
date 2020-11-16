@@ -9,10 +9,10 @@
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
 
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="../estilo.css">
     <title>Mis Envios</title>
     <!-- Template CSS -->
-    <link rel="stylesheet" href="assets/css/style-starter.css">
+    <link rel="stylesheet" href="../assets/css/style-starter.css">
     <!-- Template CSS -->
     <link href="//fonts.googleapis.com/css?family=Noto+Sans+JP:100,300,400,500,700&display=swap" rel="stylesheet">
     <!-- Template CSS -->
@@ -25,7 +25,7 @@
         <!--/nav-->
         <nav class="navbar navbar-expand-lg navbar-light px-lg-0 py-0 px-3 stroke">
             <div class="container">
-                <h1><a class="navbar-brand" href="index.php"> Paquetitos Doki <span>
+                <h1><a class="navbar-brand" href="../index.php"> Paquetitos Doki <span>
                         </span></a></h1>
                 <!-- if logo is image enable this   
 						<a class="navbar-brand" href="#index.php">
@@ -45,7 +45,7 @@
                                 <li><a class="nav-link" href="enviosSolicitados.php">Envios Solicitados</a></li>
                                 <li><a class="nav-link" href="envios.php">Envios</a></li>
                                 <li><a class="nav-link"
-                                        href="klorofil-free-dashboard-template-v2.0/template/page-login.html">Salir</a>
+                                        href="../klorofil-free-dashboard-template-v2.0/template/page-login.html">Salir</a>
                                 </li>
                             </ul>
                         </li>
@@ -88,7 +88,7 @@
                                                         Estatus</th>
 
                                                     <?php
-			$conexion=mysqli_connect("localhost","root","","bdnegocioss") or
+			$conexion=mysqli_connect("localhost","root","","dokibase") or
 			die("Problemas con la conexión");
 
 			//Aqui se le tiene que agregar el ID del usuario logueado en un where
