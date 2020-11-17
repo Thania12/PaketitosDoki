@@ -16,7 +16,8 @@ function registro(){
 
 
     $consulta = $link -> prepare("INSERT INTO cliente (Nombre, Apellido, Edad, Sexo, Correo, Contrasena, Telefono, Estado_Origen) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)");
-    $consulta -> bind_param("ssisssis", $nombre, $apellido, $edad, $sexo, $correo, $contrasena, $telefono, $estado_origen);
+    echo getcwd();
+    $consulta -> bind_param("ssisssss", $nombre, $apellido, $edad, $sexo, $correo, $contrasena, $telefono, $estado_origen);
      $consulta -> execute();
      $resultado = $consulta -> affected_rows;
      $consulta -> free_result();
@@ -25,7 +26,7 @@ function registro(){
 
      if($resultado == 1){
          $_SESSION['Nombre'] = $nombre; 
-         header('Location: loginUsuario');
+         header('Location: ../usuario/loginU.php');
 
      } else{
          $errores[] = 'Estamos experimentando problemas, no se ha podido registrar. Intente por favor intente más tarde.';

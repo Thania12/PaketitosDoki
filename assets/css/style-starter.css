@@ -54,6 +54,10 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.errores{
+  padding: 10px 30px; 
+}
+
 article,
 aside,
 figcaption,

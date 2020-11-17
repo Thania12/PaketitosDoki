@@ -1,10 +1,26 @@
 <?php
 session_start();
 require_once('../funciones/funciones.php');
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-   $errores = registro();
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ficha']) && validar_ficha($_POST['ficha'])) {
+   $campos = [
+	   'Nombre' => 'Nombre',
+	   'Apellido' => 'Apellido',
+	   'Domicilio' => 'Domicilio',
+	   'RFC' => 'RFC',
+	   'Telefono' => 'Telefono',
+	   'Correo' => 'Correo',
+	   'Contra' => 'Contraseña',
+	   'Contra2' => 'Re-Contraseña',
+	   'Edad' => 'Edad'
+
+   ];
+   //este errores es para validar si esta vacio el arreglo
+	$errores = validar($campos);
+	if(empty($errores)){
+    $errores = registro();
+	}
 }
-require_once('../bd/conexion.php');
+
 ?>
 
 <head>
@@ -23,7 +39,12 @@ require_once('../bd/conexion.php');
 	<link href="//fonts.googleapis.com/css?family=Noto+Sans+JP:100,300,400,500,700&display=swap" rel="stylesheet">
 	<!-- Template CSS -->
 </head>
-
+<script>
+        (function(w,d,u){
+                var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
+                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        })(window,document,'https://cdn.bitrix24.es/b16024689/crm/site_button/loader_1_0ci0vx.js');
+</script>
 <body>
 
 	<!---HEADER (TODO LO DEL MENU)-->
@@ -99,12 +120,13 @@ require_once('../bd/conexion.php');
 					<div class="col-lg-7 story-gd pl-lg-4">
 							<!--form para registro del viajero-->
 								<!--Todo separado por grupos para el JQuery-->
-				
+				        
 						<div class="form-inner-cont">
 						<!-- AQUI INICIA EL FORM, AQUI VA EL METHOD -->
 							<?php if(!empty($errores)){ echo mostrarErrores($errores);}?>
 							<form  class="input-field" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method= "POST" id="formulario">
-							  <div class="singup"> 
+							  <input type="hidden" name="ficha" value="<?php echo ficha_csrf(); ?>">
+							 <div class="singup"> 
 								<div class="title-content text-center">
 									<h6 class="sub-title">Crear Nueva Cuenta de Viajero</h6>
 									<h3 class="hny-title"> Comienza a ganar dinero</h3>
@@ -114,7 +136,7 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="grupo__Nombre">
 											<label for="Nombre" class="formulario__label"> Nombre(s)</label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" id= "Nombre" name="Nombre">										
+											<input type="text" class="formulario__grupo-input" value= "<?php campo('Nombre')?>" id= "Nombre" name="Nombre">										
 											</div>
 											    </div>
 
@@ -122,31 +144,58 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="grupo__Apellido">
 											<label for="Nombre" class="formulario__label"> Apellido </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" id="Apellido" name="Apellido" >
+											<input type="text" class="formulario__grupo-input"  value= "<?php campo('Apellido')?>" id="Apellido" name="Apellido" >
 										    </div>
 											 </div>
 
-                                            <!-- Grupo Edad con validacion --> 
-											 <div class="formulario__grupo" id="grupo__Edad">
-											 <label for="Nombre" class="formulario__label"> Edad  </label>
-											 <div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input"  id="Edad" name="Edad">
-											</div>
-											  </div>
-
+ 
 											  <!-- Grupo Domicilio con validacion --> 										
-											<div class="formulario__grupo" id="grupo__Domicilio">
-											<label for="Nombre" class="formulario__label"> ¿En qué Estado Vive? </label>
-											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" id="Domicilio" name= "Domicilio">
-											</div>
-											  </div>
+											  <div class="formulario_grupo" id="grupo_Nombre">
+											<label for="Nombre" class="formulario__label"> Seleccione su Estado de Origen </label>
+											<div class="">
+											<select name="Domicilio" id="Domicilio" class="form-control" style="height: 60px; font-size:14px; line-height: 1.5">
+											<option value ="Aguascalientes"> Aguascalientes </option>
+											<option value ="Baja California"> Baja California </option>
+											<option value ="Baja California Sur "> Baja California Sur </option>
+											<option value ="Campeche"> Campeche </option>
+											<option value ="CDMX"> CDMX </option>
+											<option value ="Chihuahua"> Chihuahua </option>
+											<option value ="Chiapas"> Chiapas </option>
+											<option value ="Coahuila de Zaragoza"> Coahuila de Zaragoza </option>
+											<option value ="Colima"> Colima </option>
+											<option value ="Durango"> Durango</option>
+											<option value ="Estado De Mexico"> Estado De Mexico </option>
+											<option value ="Guanajuato"> Guanajuato </option>
+											<option value ="Guerrero"> Guerrero </option>
+											<option value ="Hidalgo"> Hidalgo </option>
+											<option value ="Jalisco"> Jalisco </option>
+											<option value ="Michoacan de Ocampo"> Michoacan de Ocampo </option>
+											<option value ="Morelos"> Morelos </option>
+											<option value ="Nayarit"> Nayarit </option>
+											<option value ="Nuevo Leon"> Nuevo Leon </option>
+											<option value ="Oaxaca">Oaxaca </option>
+											<option value ="Puebla"> Puebla </option>
+											<option value ="Queretaro"> Queretaro </option>
+											<option value ="Quintana Roo"> Quintana Roo </option>
+											<option value ="San Luis Potosi"> San Luis Potosi </option>
+											<option value ="Sinaloa"> Sinaloa </option>
+											<option value ="Sonora"> Sonora </option>
+											<option value ="Tabasco"> Tabasco </option>
+											<option value ="Tamaulipas"> Tamaulipas </option>
+											<option value ="Tlaxcala"> Tlaxcala </option>
+											<option value ="Veracruz"> Veracruz </option>
+											<option value ="Yucatan"> Yucatan</option>
+											<option value ="Zacatecas"> Zacatecas </option>
+                                            </select>
+                                            </div>
+                                            
+                                            </div>
 										    
 										    <!-- Grupo RFC con validacion --> 
 											<div class="formulario__grupo" id="grupo__RFC">
 											<label for="Nombre" class="formulario__label"> RFC </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" id="RFC" name="RFC" >
+											<input type="text" class="formulario__grupo-input" value= "<?php campo('RFC')?>" id="RFC" name="RFC" >
 											</div>
 										    	</div>
 											
@@ -154,7 +203,7 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="grupo__Telefono">
 											<label for="Nombre" class="formulario__label"> Telefono  </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input"  id="Telefono" name= "Telefono" >
+											<input type="text" class="formulario__grupo-input" value= "<?php campo('Telefono')?>" id="Telefono" name= "Telefono" >
 											</div>
 											   </div>
 											
@@ -162,7 +211,7 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="grupo__Correo">
 											<label for="Nombre" class="formulario__label"> Correo </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" id="Correo" class="email" name = "Correo" >
+											<input type="text" class="formulario__grupo-input" id="Correo" value= "<?php campo('Correo')?>" class="email" name = "Correo" >
 											</div>
 										    	</div>
 
@@ -170,9 +219,26 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="grupo__Contra">
 											<label for="Nombre" class="formulario__label"> Contraseña </label>
 											<div class="formulario__grupo-input">
-											<input type="password" class="formulario__grupo-input" id="Contra" name = "Contra">
+											<input type="password" class="formulario__grupo-input" value= "<?php campo('Contra')?>" id="Contra" name = "Contra">
 											</div>
 											  </div>
+											  
+											 <!-- Grupo Confirmar contra--> 
+											<div class="formulario__grupo" id="grupo__Contra">
+											<label for="Nombre" class="formulario__label"> Confirme la contraseña </label>
+											<div class="formulario__grupo-input">
+											<input type="password" class="formulario__grupo-input" value= "<?php campo('Contra2')?>"  id="Contra2" name = "Contra2">
+											</div>
+											  </div>
+
+											 <!-- Grupo Edad con validacion --> 
+											 <div class="formulario__grupo" id="grupo__Edad">
+											 <label for="Nombre" class="formulario__label"> Edad  </label>
+											 <div class="formulario__grupo-input">
+											<input type="text" class="formulario__grupo-input" value= "<?php campo('Edad')?>" id="Edad" name="Edad">
+											</div>
+											  </div>
+
 											<!-- Grupo boton --> 
 									       <div class="formulario__grupo" id="formulario__grupo-btn-enviar">
 										   <label for="Espacio" class="formulario__label"> </label> 
