@@ -166,7 +166,7 @@ require_once('../bd/conexion.php');
                                             </div>
                                          <!-- Grupo Fecha con validacion --> 
                                             <div class="formulario__grupo" id="grupo__Edad">
-											 <label for="Nombre" class="formulario__label"> Comentarios  </label>
+											 <label for="Nombre" class="formulario__label"> Comentarios (es fragil, algo relevante) </label>
 											 <div class="formulario__grupo-input">
 											<input type="text" class="formulario__grupo-input"  id="Comentario" name="Comentario">
 											<i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -185,7 +185,7 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="formulario__grupo-btn-enviar">
 										   <label for="Espacio" class="formulario__label"> </label> 
 										   <input type="submit" id="register"  name="register" value="Registrar" /> 
-										  <p class="formulario__mensaje-exito" id="formulario__mensaje-exito"> Registroso exitoso </p>
+										  <p class="formulario__mensaje-exito" id="formulario__mensaje-exito"> Envio registrado </p>
 										  </div>
 												</div>
 												   </div>

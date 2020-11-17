@@ -23,7 +23,7 @@ $consulta->bindParam(':Estado_Origen',$estado_origen);
        echo "Envio Registrado";
        header("Location: ../usuario/Envios.php");
    }else{
-    echo "Error en el registro";
+    echo "Error en la creacion del nuevo envio, intente despues";
    }
 ?>
    
