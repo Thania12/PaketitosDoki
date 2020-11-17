@@ -49,7 +49,7 @@
 								<ul>
 									<li><a class="nav-link" href="./viajero/FormularioViajero.php">Viajero</a></li>
 									<li><a class="nav-link" href="usuario/FormularioUsuario.php">Usuario</a></li>
-									<li><a class="nav-link" href="klorofil-free-dashboard-template-v2.0/template/page-login.html">Administrativo</a></li>
+									<li><a class="nav-link" href="Administrador1/starter.php">Administrativo</a></li>
 								</ul>
 							</li>
 						</ul>
