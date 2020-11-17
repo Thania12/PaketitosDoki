@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('../funcionesUsuario/funcionesUsuario.php');
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ficha'])){
    registro();
 }
 require_once('../bd/conexion.php');
@@ -101,8 +101,10 @@ require_once('../bd/conexion.php');
 						<!--FORM PARA REGISTRO DE USUARIOS AQUI VA EL METHOD Y ESO-->
 						
 						<!-- CADA INPUT TIENE UN ID Y NAME-->
+						<?php if(!empty($errores)){ echo mostrarErrores($errores);}?>
 							<form  class="input-field" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method= "POST" id="formularioUsuario">
-							  <div class="singup"> 
+							<input type="hidden" name="ficha" value="<?php echo ficha_csrf(); ?>"> 
+							<div class="singup"> 
 								<div class="title-content text-center">
 									<h6 class="sub-title">Crea tu cuenta de Usuario </h6>
 									<h3 class="hny-title"> Realiza tus envios </h3>

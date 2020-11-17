@@ -11,10 +11,7 @@ function registro(){
     $contrasena = limpiar($_POST['Contrasena']);
     $telefono = limpiar($_POST['Telefono']);
     $estado_origen = limpiar($_POST['Estado_Origen']);
-   
-   
-
-
+ 
     $consulta = $link -> prepare("INSERT INTO cliente (Nombre, Apellido, Edad, Sexo, Correo, Contrasena, Telefono, Estado_Origen) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)");
     echo getcwd();
     $consulta -> bind_param("ssisssss", $nombre, $apellido, $edad, $sexo, $correo, $contrasena, $telefono, $estado_origen);
@@ -40,4 +37,24 @@ function registro(){
        $datos = htmlspecialchars($datos);
        return $datos; 
    }
+   function mostrarErrores($errores){
+    $resultado= '<div class="alert alert-danger errores"><ul>';
+    foreach($errores as $error){
+        $resultado.='<li>' . htmlspecialchars($error);
+    }
+    $resultado .= '</ul></div>';
+    return $resultado;
+}
+function ficha_csrf(){
+    $ficha = bin2hex(random_bytes(32));
+    return $_SESSION['ficha'] = $ficha;
+}
+//usada para la ficha creada, con el hash se protege del timing attack
+function validar_ficha($ficha){
+    if(isset($_SESSION['ficha']) && hash_equals($_SESSION['ficha'], $ficha)){
+        unset($_SESSION['ficha']);
+        return true;
+    }
+    return false;
+}
 ?>
