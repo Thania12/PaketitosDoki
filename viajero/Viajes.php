@@ -172,7 +172,7 @@ require_once('../bd/conexion.php');
 											$id_viajero = isset($_SESSION['ID_Viajero']) ? $_SESSION['ID_Viajero'] : '';
 											?>
 											 <div class="formulario__grupo" id="grupo__id">
-											 <label for="Nombre" class="formulario__label"> Tu Clave de viajero : </label>
+											 <label for="Nombre" class="formulario__label"> Clave de viajero : </label>
 											 <div class="formulario__grupo-input">
 											<input class="formulario__grupo-input"  id="ID_Viajero" name="ID_Viajero" value="<?php echo $id_viajero; ?>"/>
 											<!-- Grupo boton --> 
