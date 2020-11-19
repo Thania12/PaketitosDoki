@@ -126,9 +126,9 @@ require_once('../bd/conexion.php');
 											  </div>
 											  <!-- Grupo Edad con validacion --> 
 											<div class="formulario__grupo" id="grupo__Edad">
-											<label for="Nombre" class="formulario__label"> Edad </label>
+											<label for="Nombre" class="formulario__label"> Fecha de nacimiento </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" id="Edad" name="Edad" >
+											<input type="date" class="formulario__grupo-input" id="Edad" name="Edad" >
 										     </div>
 											  </div>
 											<!-- Grupo Sexo con validacion --> 

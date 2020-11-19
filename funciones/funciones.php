@@ -12,11 +12,12 @@ function registro(){
     $telefono = limpiar($_POST['Telefono']);
     $correo = limpiar($_POST['Correo']);
     $contra = limpiar($_POST['Contra']);
+    $passHash = password_hash($contra, PASSWORD_BCRYPT);
     $edad = limpiar($_POST['Edad']);
 
 
     $consulta = $link -> prepare("INSERT INTO viajero (Nombre, Apellido, Domicilio, Fecha_registro,RFC, Telefono, Correo, Contra, Edad) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $consulta -> bind_param("sssssssss", $nombre, $apellido, $domicilio, $fecha_registro, $rfc, $telefono, $correo, $contra, $edad);
+    $consulta -> bind_param("sssssssss", $nombre, $apellido, $domicilio, $fecha_registro, $rfc, $telefono, $correo, $passHash, $edad);
     
     $consulta -> execute();
      $resultado = $consulta -> affected_rows;

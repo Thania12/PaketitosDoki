@@ -1,25 +1,10 @@
 <?php
 session_start();
 require_once('../funciones/funciones.php');
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ficha']) && validar_ficha($_POST['ficha'])) {
-   $campos = [
-	   'Nombre' => 'Nombre',
-	   'Apellido' => 'Apellido',
-	   'Domicilio' => 'Domicilio',
-	   'RFC' => 'RFC',
-	   'Telefono' => 'Telefono',
-	   'Correo' => 'Correo',
-	   'Contra' => 'Contraseña',
-	   'Contra2' => 'Re-Contraseña',
-	   'Edad' => 'Edad'
-
-   ];
-   //este errores es para validar si esta vacio el arreglo
-	$errores = validar($campos);
-	if(empty($errores)){
-    $errores = registro();
-	}
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ficha'])) {
+   registro();
 }
+require_once('../bd/conexion.php');
 
 ?>
 

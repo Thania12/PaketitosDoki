@@ -11,7 +11,9 @@ require_once('../bd/conexion.php');
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script> 
 	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-	
+	<link rel="stylesheet" type="text/css" href="../assets/jquery-ui-1.12.1.custom/jquery-ui.css">
+	<script src="../assets/js/jquery-3.3.1.min.js"></script>
+    <script src="../assets/js/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 	<link rel="stylesheet" href="../estilo.css">
 	<title>Envios</title>
 	<!-- Template CSS -->
@@ -349,7 +351,7 @@ require_once('../bd/conexion.php');
 </body>
 
 </html>
-<script src="assets/js/jquery-3.3.1.min.js"></script>
+
 <!-- disable body scroll which navbar is in active -->
 
 <!--//-->
