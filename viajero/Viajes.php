@@ -29,6 +29,7 @@ require_once('../bd/conexion.php');
 </script>
 <body>
 
+
 	<!---header-->
 	<header class="w3l-header-nav">
 		<!--/nav-->

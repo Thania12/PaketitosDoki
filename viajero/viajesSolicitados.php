@@ -80,7 +80,7 @@ require_once('../bd/conexion.php');
                             <form class="input-field" id="formulario">
                                 <div class="singup">
                                     <div class="title-content text-center">
-                                        <div class="bg-white row" style="height: 300px;">
+                                        <div class="bg-white row" style="overflow:scroll;">
                                             <div class="col-md-6">
                                                 <table class="table">
                                                     <th>Usuario</th>
@@ -103,7 +103,7 @@ require_once('../bd/conexion.php');
                                                         <td>'.$reg["Comentario"].'</td>
                                                         <td><form action="altaMisViajes.php" method="´POST">
                                                             <button name="agrega" class="border-0 font-weight-bold" type="submit" value="'.$reg["ID"].'"
-                                                                style="background-color:yellowgreen; color: white;">Agregar Viaje
+                                                                style="background-color:yellowgreen; color: white;"> Seleccionar 
                                                             </button>
                                                             </form>
                                                         </td>
@@ -116,7 +116,8 @@ require_once('../bd/conexion.php');
                                                 </table>
                                             </div>
                                             <div class="col-md-4 text-center">
-                                                <img style="width: 400px; height: 300px;" src="highway.jpg" alt="">
+                                                <img style="width: 400px; height: 300px; display:block; margin:auto;" src="highway.jpg" alt="">
+                                                
                                             </div>
 
                                         </div>

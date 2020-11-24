@@ -182,6 +182,11 @@ require_once('../bd/conexion.php');
 											<?php
 											$id_cliente = isset($_SESSION['ID_Cliente']) ? $_SESSION['ID_Cliente'] : '';
 											?>
+
+	<?php 
+											
+  			
+		?>
 											
 											 <div class="formulario__grupo" id="grupo__id">
 											 <label for="Nombre" class="formulario__label"> Tu Clave de Usuario : </label>

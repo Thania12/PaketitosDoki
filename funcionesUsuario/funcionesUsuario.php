@@ -6,6 +6,9 @@ function registro(){
     $nombre = limpiar($_POST['Nombre']);
     $apellido = limpiar($_POST['Apellido']);
     $edad = limpiar($_POST['Edad']);
+       //$dia_actual = date("Y-m-d");
+    //$edad_diff= date_diff(date_create($edad), date_create($dia_actual));
+    //$edadc = $edad_diff -> format('%y');
     $sexo = limpiar("Sexo");
     $correo = limpiar($_POST['Correo']);
     $contrasena = limpiar($_POST['Contrasena']);
@@ -16,7 +19,7 @@ function registro(){
     password_verify($contrasena, $passHash);
     $consulta = $link -> prepare("INSERT INTO cliente (Nombre, Apellido, Edad, Sexo, Correo, Contrasena, Telefono, Estado_Origen) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)");
     echo getcwd();
-    $consulta -> bind_param("ssisssss", $nombre, $apellido, $edad, $sexo, $correo, $passHash, $telefono, $estado_origen);
+    $consulta -> bind_param("ssssssss", $nombre, $apellido, $edad, $sexo, $correo, $passHash, $telefono, $estado_origen);
      $consulta -> execute();
      $resultado = $consulta -> affected_rows;
      $consulta -> free_result();
