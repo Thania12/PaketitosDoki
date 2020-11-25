@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2020 a las 06:49:42
+-- Tiempo de generación: 25-11-2020 a las 03:01:53
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -109,7 +109,12 @@ INSERT INTO `cliente` (`ID_Cliente`, `Nombre`, `Apellido`, `Edad`, `Sexo`, `Corr
 (31, 'Juan Omar', 'Delgadillo', '0000-00-00', 'S', 'juan@correo.com', 'juan123', '2147483647', 'Estado De Mexico'),
 (32, 'Juan', 'Rivera', '0000-00-00', 'S', 'juan1@correo.com', 'juan123', '0', 'Chihuahua'),
 (33, 'Juan', 'Reyes', '0000-00-00', 'S', 'juan@correo.com', 'juan123', '355677', 'Coahuila de Zaragoza'),
-(37, 'Rey', 'Lopez', '0000-00-00', 'S', 'rey@correo.com', 'rey123', '44928372', 'Baja California');
+(37, 'Rey', 'Lopez', '0000-00-00', 'S', 'rey@correo.com', 'rey123', '44928372', 'Baja California'),
+(40, 'Prueba', 'Prueba', '0000-00-00', 'Sexo', 'prueba@correo.com', 'prueba123', '2334455', 'Jalisco'),
+(41, 'Prueba2', 'Prueba', '0000-00-00', 'Sexo', 'prueba1@prueba', 'prueba123', '445566777', 'Chihuahua'),
+(42, 'Prueba3', 'Prueba3', '0000-00-00', 'Sexo', 'prueba3@correo.com', '$2y$10$9h0Ro08XILK2D', '5556666777', 'Estado De Mexico'),
+(45, '', '', '0000-00-00', 'Sexo', '', '$2y$10$CpvGruR/woqCr', '', 'Aguascalientes'),
+(46, '', '', '2020-11-17', 'Sexo', '', '$2y$10$Qp660SO4CTfDv', '', 'Aguascalientes');
 
 -- --------------------------------------------------------
 
@@ -119,12 +124,24 @@ INSERT INTO `cliente` (`ID_Cliente`, `Nombre`, `Apellido`, `Edad`, `Sexo`, `Corr
 
 CREATE TABLE `mis_viajes` (
   `ID_MViajes` int(6) NOT NULL,
-  `ID_NViaje` int(6) NOT NULL,
   `ID_NEnvio` int(6) NOT NULL,
+  `ID_Cliente` int(11) NOT NULL,
+  `Nombre` varchar(20) NOT NULL,
+  `Estado_origen` varchar(20) NOT NULL,
+  `Estado_destino` varchar(20) NOT NULL,
   `Fecha_Envio` date NOT NULL,
-  `modo` varchar(25) NOT NULL,
-  `ID_Admin` int(6) NOT NULL
+  `Comentario` varchar(50) NOT NULL,
+  `modo` varchar(25) NOT NULL DEFAULT 'Seleccionado',
+  `Precio_final` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `mis_viajes`
+--
+
+INSERT INTO `mis_viajes` (`ID_MViajes`, `ID_NEnvio`, `ID_Cliente`, `Nombre`, `Estado_origen`, `Estado_destino`, `Fecha_Envio`, `Comentario`, `modo`, `Precio_final`) VALUES
+(20, 0, 0, '', '..', '..', '0000-00-00', '..', 'Seleccionado', 0),
+(21, 0, 0, '', '..', '..', '0000-00-00', '..', 'Seleccionado', 0);
 
 -- --------------------------------------------------------
 
@@ -138,18 +155,22 @@ CREATE TABLE `nuevo_envio` (
   `Estado_Destino` text NOT NULL,
   `Fecha_Envio` date NOT NULL,
   `Comentario` varchar(50) NOT NULL,
-  `ID_Cliente` int(6) NOT NULL
+  `ID_Cliente` int(6) NOT NULL,
+  `Precio_final` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `nuevo_envio`
 --
 
-INSERT INTO `nuevo_envio` (`ID_NEnvio`, `Estado_Origen`, `Estado_Destino`, `Fecha_Envio`, `Comentario`, `ID_Cliente`) VALUES
-(1, 'Guanajuato', 'Aguascalientes', '2020-11-28', 'Fragil', 3),
-(2, 'Zacatecas', 'Jalisco', '0000-00-00', 'Es una caja con zapatos', 2),
-(3, 'Campeche', 'Sonora', '2020-11-10', 'Caja fragil', 11),
-(4, 'Sonora', 'Nuevo Leon', '2020-11-17', 'Es una cama', 7);
+INSERT INTO `nuevo_envio` (`ID_NEnvio`, `Estado_Origen`, `Estado_Destino`, `Fecha_Envio`, `Comentario`, `ID_Cliente`, `Precio_final`) VALUES
+(1, 'Guanajuato', 'Aguascalientes', '2020-11-28', 'Fragil', 3, 0),
+(2, 'Zacatecas', 'Jalisco', '0000-00-00', 'Es una caja con zapatos', 2, 0),
+(3, 'Campeche', 'Sonora', '2020-11-10', 'Caja fragil', 11, 0),
+(4, 'Sonora', 'Nuevo Leon', '2020-11-17', 'Es una cama', 7, 0),
+(5, 'Baja California Sur ', 'Campeche', '2020-11-18', 'Paquete Fragil', 41, 0),
+(6, 'Campeche', 'CDMX', '2020-11-25', '', 41, 0),
+(17, 'Baja California Sur ', 'Durango', '2020-11-10', 'Envio', 3, 150);
 
 -- --------------------------------------------------------
 
@@ -252,9 +273,7 @@ ALTER TABLE `cliente`
 --
 ALTER TABLE `mis_viajes`
   ADD PRIMARY KEY (`ID_MViajes`),
-  ADD KEY `ID_NViaje` (`ID_NViaje`),
-  ADD KEY `ID_NEnvio` (`ID_NEnvio`),
-  ADD KEY `ID_Admin` (`ID_Admin`);
+  ADD KEY `ID_NEnvio` (`ID_NEnvio`);
 
 --
 -- Indices de la tabla `nuevo_envio`
@@ -290,25 +309,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `ID_Cliente` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `ID_Cliente` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `mis_viajes`
 --
 ALTER TABLE `mis_viajes`
-  MODIFY `ID_MViajes` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_MViajes` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `nuevo_envio`
 --
 ALTER TABLE `nuevo_envio`
-  MODIFY `ID_NEnvio` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_NEnvio` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `nuevo_viaje`
 --
 ALTER TABLE `nuevo_viaje`
-  MODIFY `ID_NViaje` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_NViaje` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `viajero`
@@ -319,14 +338,6 @@ ALTER TABLE `viajero`
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `mis_viajes`
---
-ALTER TABLE `mis_viajes`
-  ADD CONSTRAINT `mis_viajes_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`Id_admin`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `mis_viajes_ibfk_2` FOREIGN KEY (`ID_NViaje`) REFERENCES `nuevo_viaje` (`ID_NViaje`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `mis_viajes_ibfk_3` FOREIGN KEY (`ID_NEnvio`) REFERENCES `nuevo_envio` (`ID_NEnvio`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `nuevo_envio`

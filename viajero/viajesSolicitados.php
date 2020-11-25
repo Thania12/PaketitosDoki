@@ -95,8 +95,7 @@ require_once('../bd/conexion.php');
 
 													$registros=mysqli_query($conexion,"SELECT ne.ID_NEnvio AS ID,c.Nombre AS Nombre, ne.Estado_Destino AS Destino, ne.Fecha_Envio AS Fecha, ne.Comentario AS Comentario FROM nuevo_envio ne INNER JOIN cliente c ON c.ID_Cliente = ne.ID_Cliente") or 
 													die("Problemas en el select:".mysqli_error($conexion));
-                                                    while ($reg=mysqli_fetch_array($registros))
-                                                      {
+                                                    while ($reg=mysqli_fetch_array($registros)) {
                                                     echo'
                                                     <tr>
                                                         <td>'.$reg["ID"].'</td>
@@ -110,7 +109,7 @@ require_once('../bd/conexion.php');
                                                             </button>
                                                             </form>
                                                         </td>
-                                                    </tr>
+                                                    </tr>';
                                                     }
                                                     
                                                     mysqli_close($conexion);

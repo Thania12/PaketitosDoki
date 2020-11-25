@@ -255,6 +255,7 @@
 						</p>
 					</div>
 				</div>
+				<!-- COTIZAR -->
 				<div class="col-lg-5 quote-form-content mt-lg-0 mt-5 pt-lg-2">
 					<div class="quote-form p-md-5 p-4 mx-auto mw-100">
 						<h4>Solicitar presupuesto</h4>
