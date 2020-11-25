@@ -17,7 +17,8 @@ function registro(){
     $estado_origen = limpiar($_POST['Estado_Origen']);
  
     password_verify($contrasena, $passHash);
-    $consulta = $link -> prepare("INSERT INTO cliente (Nombre, Apellido, Edad, Sexo, Correo, Contrasena, Telefono, Estado_Origen) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)");
+    $consulta = $link -> prepare("INSERT INTO cliente (Nombre, Apellido, Edad, Sexo, 
+    Correo, Contrasena, Telefono, Estado_Origen) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)");
     echo getcwd();
     $consulta -> bind_param("ssssssss", $nombre, $apellido, $edad, $sexo, $correo, $passHash, $telefono, $estado_origen);
      $consulta -> execute();

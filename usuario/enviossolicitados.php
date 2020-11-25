@@ -4,9 +4,6 @@ require_once('../bd/conexion.php');
 
 ?>
 
-<!Doctype html>
-<html>
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -16,19 +13,14 @@ require_once('../bd/conexion.php');
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
 
     <link rel="stylesheet" href="../estilo.css">
-    <title>Viajes Solicitados</title>
+    <title>Envios Solicitados</title>
     <!-- Template CSS -->
     <link rel="stylesheet" href="../assets/css/style-starter.css">
     <!-- Template CSS -->
     <link href="//fonts.googleapis.com/css?family=Noto+Sans+JP:100,300,400,500,700&display=swap" rel="stylesheet">
     <!-- Template CSS -->
 </head>
-<script>
-        (function(w,d,u){
-                var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
-                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
-        })(window,document,'https://cdn.bitrix24.es/b16024689/crm/site_button/loader_1_0ci0vx.js');
-</script>
+
 <body>
 
     <!---header-->
@@ -36,7 +28,7 @@ require_once('../bd/conexion.php');
         <!--/nav-->
         <nav class="navbar navbar-expand-lg navbar-light px-lg-0 py-0 px-3 stroke">
             <div class="container">
-            <h1><a class="navbar-brand" href="../index.php"><span>P</span>aquetitos <span>D</span>oki</a></h1>
+                <h1><a class="navbar-brand" href="../index.php"> Paquetitos Doki <span>
                         </span></a></h1>
                 <!-- if logo is image enable this   
 						<a class="navbar-brand" href="#index.php">
@@ -53,10 +45,10 @@ require_once('../bd/conexion.php');
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <ul>
-                                <li><a class="nav-link" href="viajes.php"> Nuevo Viaje</a></li>
-                                <li><a class="nav-link" href="misviajes.php">Mis Viajes</a></li>
+                                <li><a class="nav-link" href="misenvios.php">Mis Envios</a></li>
+                                <li><a class="nav-link" href="Envios.php">Envios</a></li>
                                 <li><a class="nav-link"
-                                        href="loginV.php">Salir</a>
+                                        href="klorofil-free-dashboard-template-v2.0/template/page-login.html">Salir</a>
                                 </li>
                             </ul>
                         </li>
@@ -76,95 +68,119 @@ require_once('../bd/conexion.php');
                     <div class="col-lg-12 story-gd pl-lg-4">
                         <!--form para registro del viajero-->
                         <!--Todo separado por grupos para el JQuery-->
-                        <div class="form-inner-cont">
+                        <div class="form-inner-cont" style = " overflow:scroll;">
                             <form class="input-field" id="formulario">
                                 <div class="singup">
                                     <div class="title-content text-center">
-                                        <div class="bg-white row" style="overflow:scroll;">
-                                            <div class="col-md-6">
-                                                <table class="table">
-                                                    <th>Clave envio</th>
-                                                    <th>Usuario</th>
-                                                    <th>Destino</th>
-                                                    <th>Fecha</th>
-                                                    <th>Comentarios</th>
+                                        <div class="bg-white row" style="height: 500px;">
+                                            <div class="col-md-10 m-2 d-flex align-items-center"
+                                                style="justify-content: center; padding-left: 10%; ">
+                                                <table class="table" style=" border-color: #9cc0e9;  border-style: solid;">
+                                                    <th
+                                                        style="background-color: #9cb6e9; text-align: center; color: white; border-style: solid; border-color: #9cc0e9;">
+                                                        id_envio</th>
+                                                    <th
+                                                        style="background-color: #9cb6e9;  text-align: center; color: white; border-style: solid; border-color: #9cc0e9;">
+                                                        Estado</th>
+                                                    <th
+                                                    style="background-color: #9cb6e9; text-align: center; color: white; border-style: solid; border-color: #9cc0e9;">
+                                                        Destino</th>
+                                                    <th
+                                                    style="background-color: #9cb6e9; text-align: center; color: white; border-style: solid; border-color: #9cc0e9;">
+                                                        Fecha de Envio</th>
+                                                    <th
+                                                    style="background-color: #9cb6e9;  text-align: center;color: white; border-style: solid; border-color: #9cc0e9;">
+                                                        Precio por Envio</th>
+                                                    <th
+                                                    style="background-color: #9cb6e9;  text-align: center;color: white; border-style: solid; border-color: #9cc0e9;">  
+                                                        Comentarios</th>
 
                                                     <?php
-													$conexion=mysqli_connect("localhost","root","","dokibase") or
-													die("Problemas con la conexión");
+								$conexion=mysqli_connect("localhost","root","","dokibase") or
+                                die("Problemas con la conexión");
+                                $id_cliente = isset($_SESSION['ID_Cliente']) ? $_SESSION['ID_Cliente'] : '';
+								//Aqui se le tiene que agregar el ID del usuario logueado en un where
+								$registros=mysqli_query($conexion,"SELECT * FROM nuevo_envio WHERE ID_Cliente = $id_cliente") or 
+								die("Problemas en el select:".mysqli_error($conexion));
+								while ($reg=mysqli_fetch_array($registros))
+								{
+								echo '
+				
 
-													$registros=mysqli_query($conexion,"SELECT ne.ID_NEnvio AS ID,c.Nombre AS Nombre, ne.Estado_Destino AS Destino, ne.Fecha_Envio AS Fecha, ne.Comentario AS Comentario FROM nuevo_envio ne INNER JOIN cliente c ON c.ID_Cliente = ne.ID_Cliente") or 
-													die("Problemas en el select:".mysqli_error($conexion));
-                                                    while ($reg=mysqli_fetch_array($registros))
-                                                      {
-                                                    echo'
-                                                    <tr>
-                                                        <td>'.$reg["ID"].'</td>
-                                                        <td>'.$reg["Nombre"].'</td>
-                                                        <td>'.$reg["Destino"].'</td>
-                                                        <td>'.$reg["Fecha"].'</td>
-                                                        <td>'.$reg["Comentario"].'</td>
-                                                        <td><form action="altaMisViajes.php" method="POST">
-                                                            <button name="agrega" class="border-0 font-weight-bold" type="submit" value="'.$reg["ID"].'"
-                                                                style="background-color:yellowgreen; color: white;"> Seleccionar 
-                                                            </button>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                    }
-                                                    
-                                                    mysqli_close($conexion);
-													?>
-
+						<tr>
+							<td style="border-style: solid; border-color: black;">'.$reg['ID_NEnvio'].'</td>
+							<td style="border-style: solid; border-color: black;">'.$reg['Estado_Origen'].'</td>
+							<td style="border-style: solid; border-color: black;">'.$reg['Estado_Destino'].'</td>
+                            <td style="border-style: solid; border-color: black;">'.$reg['Fecha_Envio'].'</td>
+                            <td style="border-style: solid; border-color: black;" $>'.$reg['Precio_final'].'</td>
+							<td style="border-style: solid; border-color: black; color: red;">'.$reg['Comentario'].'</td>
+						</tr>
+						';
+		
+							}
+							mysqli_close($conexion);
+							?>
                                                 </table>
-                                            </div>
-                                            <div class="col-md-4 text-center">
-                                                <img style="width: 400px; height: 300px; display:block; margin:auto;" src="highway.jpg" alt="">
-                                                
-                                            </div>
 
+                                            </div>
+                                            
+                                            <div class="col-md-12 text-center">
+                                             <button class="btn font-weight-bold"
+                                                    style=" 
+                                                     background-color: #3d73de;
+														 color: white;
+														 padding: 10px 15px;
+														 border: none;
+														 border-radius: 25px;
+														 float: center;
+														 text-align: center;
+                                                    ">Confirmar
+                                                    envio</button>
+                                            </div>
                                         </div>
-
                                     </div>
-                                    <br>
+                                </div>
+                        </div>
+                    </div>
 
-                                    <style>
-                                    input[type=button] {
-                                        background-color: #3d73de;
-                                        color: white;
-                                        padding: 5px 10px;
-                                        border: none;
-                                        border-radius: 10px;
-                                        cursor: pointer;
-                                        float: right;
-                                        background: #;
-                                        text-align: center;
 
-                                    }
+                    <style>
+                    input[type=button] {
+                        background-color: #3d73de;
+                        color: white;
+                        padding: 5px 10px;
+                        border: none;
+                        border-radius: 10px;
+                        cursor: pointer;
+                        float: right;
+                        background: #;
+                        text-align: center;
 
-                                    input[type=submit]:hover {
-                                        background-color: #5e9ad6;
-                                    }
+                    }
 
-                                    input[type=submit] {
-                                        background-color: #5e9ad6;
-                                        color: white;
-                                        padding: 5px 10px;
-                                        border: none;
-                                        border-radius: 10px;
-                                        cursor: pointer;
-                                        float: right;
-                                        text-align: center;
-                                    }
+                    input[type=submit]:hover {
+                        background-color: #5e9ad6;
+                    }
 
-                                    .warnings {
-                                        width: 200px;
-                                        text-align: center;
-                                        margin: auto;
-                                        color: #B06AB3;
-                                        padding-top: 20px;
-                                    }
-                                    </style>
+                    input[type=submit] {
+                        background-color: #5e9ad6;
+                        color: white;
+                        padding: 5px 10px;
+                        border: none;
+                        border-radius: 10px;
+                        cursor: pointer;
+                        float: right;
+                        text-align: center;
+                    }
+
+                    .warnings {
+                        width: 200px;
+                        text-align: center;
+                        margin: auto;
+                        color: #B06AB3;
+                        padding-top: 20px;
+                    }
+                    </style>
 
     </section>
 
@@ -179,7 +195,7 @@ require_once('../bd/conexion.php');
                         <div class="right-side">
                             <div class="row sub-columns">
                                 <div class="col-lg-4 col-md-6 sub-one-left pr-lg-4">
-                                    <h2><a class="navbar-brand" href="../index.php">Paquetitos<span> Doki </span></a></h2>
+                                    <h2><a class="navbar-brand" href="index.php">Paquetitos<span> Doki </span></a></h2>
                                     <!-- if logo is image enable this   
 									<a class="navbar-brand" href="#index.php">
 										<img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
@@ -193,7 +209,6 @@ require_once('../bd/conexion.php');
 
                                             <li><a href="#twitter"><span class="fa fa-twitter"
                                                         aria-hidden="true"></span></a>
-                                                        
                                             </li>
 
                                         </ul>
@@ -203,14 +218,14 @@ require_once('../bd/conexion.php');
                                     <div class="sub-two-right">
                                         <h6> Menú </h6>
                                         <ul>
-                                            <li><a href="viajes.php"><span class="fa fa-angle-right mr-2"></span>Elegir Viaje
+                                            <li><a href="envios.php"><span class="fa fa-angle-right mr-2"></span>Envios
                                                 </a>
                                             </li>
-                                            <li><a href="viajesSolicitados.php"><span
-                                                        class="fa fa-angle-right mr-2"></span>Viajes solicitados </a>
+                                            <li><a href="enviosSolicitados.php"><span
+                                                        class="fa fa-angle-right mr-2"></span>Envios Solicitados </a>
                                             </li>
-                                            <li><a href="misviajes.php"><span class="fa fa-angle-right mr-2"></span>Mis
-                                                    viajes </a></li>
+                                            <li><a href="misenvios.php"><span class="fa fa-angle-right mr-2"></span>Mis
+                                                    Envios </a></li>
 
                                         </ul>
                                     </div>
@@ -234,7 +249,7 @@ require_once('../bd/conexion.php');
                         <ul class="columns text-lg-right">
                             <li><a href="#"> Politica de Privacidad </a>
                             </li>
-                            <li><a href="../about.php"> Acerca de nosotros </a>
+                            <li><a href="about.php"> Acerca de nosotros </a>
                             </li>
                         </ul>
                     </div>
@@ -270,10 +285,11 @@ require_once('../bd/conexion.php');
         </section>
     </footer>
     <!--//footer-66 -->
+    <script src="validacionesForm.js"></script>
 </body>
 
 </html>
-<script src="../assets/js/jquery-3.3.1.min.js"></script>
+<script src="assets/js/jquery-3.3.1.min.js"></script>
 <!-- disable body scroll which navbar is in active -->
 
 <!--//-->
@@ -286,4 +302,4 @@ $(function() {
 </script>
 <!--/scroll-down-JS-->
 <!--//pop-up-box-->
-<script src="../assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>

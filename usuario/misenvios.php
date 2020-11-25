@@ -1,5 +1,8 @@
-<!Doctype html>
-<html>
+<?php
+session_start();
+require_once('../bd/conexion.php');
+
+?>
 
 <head>
     <!-- Required meta tags -->
@@ -43,7 +46,7 @@
                         <li class="nav-item">
                             <ul>
                                 <li><a class="nav-link" href="enviosSolicitados.php">Envios Solicitados</a></li>
-                                <li><a class="nav-link" href="../envios.php">Envios</a></li>
+                                <li><a class="nav-link" href="Envios.php">Envios</a></li>
                                 <li><a class="nav-link"
                                         href="klorofil-free-dashboard-template-v2.0/template/page-login.html">Salir</a>
                                 </li>
@@ -90,9 +93,9 @@
                                                     <?php
 			$conexion=mysqli_connect("localhost","root","","dokibase") or
 			die("Problemas con la conexión");
-
+            $id_cliente = isset($_SESSION['ID_Cliente']) ? $_SESSION['ID_Cliente'] : '';
 			//Aqui se le tiene que agregar el ID del usuario logueado en un where
-			$registros=mysqli_query($conexion,"SELECT * from mis_envios") or 
+			$registros=mysqli_query($conexion,"SELECT * from mis_envios  WHERE ID_Cliente = $id_cliente") or 
 			die("Problemas en el select:".mysqli_error($conexion));
 
 			

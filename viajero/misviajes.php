@@ -35,7 +35,7 @@ require_once('../bd/conexion.php');
         <!--/nav-->
         <nav class="navbar navbar-expand-lg navbar-light px-lg-0 py-0 px-3 stroke">
             <div class="container">
-            <h1><a class="navbar-brand" href="../index.php"><span>P</span>aquetitos <span>D</span>oki</a></h1>
+            <h1><a class="navbar-brand" href="../index.php"><span>Mis</span> <span>Viajes</span></a></h1>
             <br> <br>
 
                         </span></a></h1>
@@ -81,25 +81,30 @@ require_once('../bd/conexion.php');
                             <form class="input-field" id="formulario">
                                 <div class="singup">
                                     <div class="title-content text-center">
-                                        <div class="bg-white row" style="height: 300px;">
+                                        <div class="bg-white row" style="height: 500px;  overflow:scroll;">
                                             <div class="col-md-6">
                                                 <table class="table">
                                                     <th>Usuario</th>
+                                                    <th>Origen</th>
                                                     <th>Destino</th>
                                                     <th>Fecha</th>
+                                                    <th>Precio</th>
                                                     <?php
 													$conexion=mysqli_connect("localhost","root","","dokibase") or
 													die("Problemas con la conexión");
 
-                                                    $registros=mysqli_query($conexion,"SELECT ne.ID_NEnvio AS ID ,c.Nombre AS Nombre, ne.Estado_Destino AS Destino, ne.Fecha_Envio AS Fecha, ne.Comentario AS Comentario FROM nuevo_envio ne INNER JOIN cliente c on c.ID_Cliente = ne.ID_Cliente WHERE ne.Comentario != ('En Camino') && ne.Comentario != ('Entregado')")
+                                                    $registros=mysqli_query($conexion,"SELECT ne.ID_NEnvio AS ID ,c.Nombre AS Nombre,ne.Estado_Origen As Origen, ne.Estado_Destino AS Destino, ne.Fecha_Envio AS Fecha, ne.Comentario AS Comentario, ne.Precio_final As Precio FROM nuevo_envio ne INNER JOIN cliente c on c.ID_Cliente = ne.ID_Cliente WHERE ne.Comentario != ('En Camino') && ne.Comentario != ('Entregado')")
 													or die("Problemas en el select:".mysqli_error($conexion));
                                                     while ($reg=mysqli_fetch_array($registros)) {
                                                         echo '
                                                     <tr>
                                                         <td>'.$reg["Nombre"].'</td>
+                                                        <td>'.$reg["Origen"].'</td>
                                                         <td>'.$reg["Destino"].'</td>
                                                         <td>'.$reg["Fecha"].'</td>
-														<td>
+                                                        <td>'.$reg["Precio"].'</td>
+                                                        <td>
+
 														<form action="actualizaMisEnvios.php" method="POST">
 														    <button name="camino"  class="border-0 font-weight-bold" type="submit" value="'.$reg["ID"].'"
                                                                 style="background-color:orange; color: white;">En Camino
@@ -120,7 +125,7 @@ require_once('../bd/conexion.php');
                                                 </table>
 
                                             </div>
-                                            <div class="col-md-4 text-center">
+                                            <div class="col-md-6 text-right">
                                                 <img style="width: 400px; height: 300px;" src="mapa.jpg" alt="">
                                             </div>
 

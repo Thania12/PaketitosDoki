@@ -9,11 +9,11 @@ $registros = mysqli_query($conexion,"SELECT ne.ID_NEnvio as ID,c.Nombre as Nombr
 //mysqli_query($conexion,"delete from nuevo_envio ne inner join cliente c on c.ID_Cliente = ne.ID_Cliente where ne.ID_NEnvio = ".$valor.";");
 
 
-echo ($registros);
-
-    mysqli_query($conexion, "INSERT INTO mis_viajes(ID_NViaje, ID_NEnvio, Fecha_Envio, Modo, ID_Admin) values 
-                       (1,'.$registros[ID].','.$registros[Fecha].','.$registros[Comentario].',1);")
-  or die("Problemas en el select".mysqli_error($conexion));
+print_r($registros);
+//mysqli_query($conexion, "INSERT INTO mis_viajes(ID_NEnvio, Estado_origen, Estado_destino, Fecha_Envio, Comentario, Precio_final ) values 
+  //              ('.$registros[ID].','.$registros[Nombre].','.$registros[Origen].','.$registros[Destino].','.$registros[Fecha].','.$registros[Precio].');")
+ 
+// or die("Problemas en el select".mysqli_error($conexion));
  
 
 mysqli_close($conexion);
