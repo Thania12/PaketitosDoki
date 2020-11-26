@@ -33,11 +33,11 @@ require_once('../bd/conexion.php');
 <body>
 
 	<!---HEADER (TODO LO DEL MENU)-->
-	<header class="w3l-header-nav">
+	<header class="w3l-header-nav" style="background-color: #c8d2dd" >
 		<!--/nav-->
 		<nav class="navbar navbar-expand-lg navbar-light px-lg-0 py-0 px-3 stroke">
 			<div class="container">
-				<h1><a class="navbar-brand" href="../index.php"> Paquetitos Doki <span>
+				<h1><a class="navbar-brand"  style="background-color: #c8d2dd"href="../index.php"> Paquetitos Doki <span>
 				</span></a></h1>
 				<!-- if logo is image enable this   
 						<a class="navbar-brand" href="#index.php">
@@ -63,7 +63,8 @@ require_once('../bd/conexion.php');
 								<ul>
 									<li><a class="nav-link" href="../viajero/FormularioViajero.php">Viajero</a></li>
 									<li><a class="nav-link" href="../usuario/FormularioUsuario.php">Usuario</a></li>
-									<li><a class="nav-link" href="../klorofil-free-dashboard-template-v2.0/template/page-login.html">Administrativo</a></li>
+									<li><a class="nav-link" href="loginV.php"> Iniciar sesión </a></li>
+                                    
 								</ul>
 							</li>
 						</ul>
@@ -121,7 +122,7 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="grupo__Nombre">
 											<label for="Nombre" class="formulario__label"> Nombre(s)</label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" value= "<?php campo('Nombre')?>" id= "Nombre" name="Nombre">										
+											<input type="text" class="formulario__grupo-input" value= "<?php campo('Nombre')?>" id= "Nombre" name="Nombre" required="">										
 											</div>
 											    </div>
 
@@ -129,7 +130,7 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="grupo__Apellido">
 											<label for="Nombre" class="formulario__label"> Apellido </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input"  value= "<?php campo('Apellido')?>" id="Apellido" name="Apellido" >
+											<input type="text" class="formulario__grupo-input"  value= "<?php campo('Apellido')?>" id="Apellido" name="Apellido" required="" >
 										    </div>
 											 </div>
 
@@ -180,7 +181,7 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="grupo__RFC">
 											<label for="Nombre" class="formulario__label"> RFC </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" value= "<?php campo('RFC')?>" id="RFC" name="RFC" >
+											<input type="text" class="formulario__grupo-input" value= "<?php campo('RFC')?>" id="RFC" name="RFC" required="">
 											</div>
 										    	</div>
 											
@@ -188,7 +189,7 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="grupo__Telefono">
 											<label for="Nombre" class="formulario__label"> Telefono  </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" value= "<?php campo('Telefono')?>" id="Telefono" name= "Telefono" >
+											<input type="text" class="formulario__grupo-input" value= "<?php campo('Telefono')?>" id="Telefono" name= "Telefono" required="" >
 											</div>
 											   </div>
 											
@@ -196,7 +197,7 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="grupo__Correo">
 											<label for="Nombre" class="formulario__label"> Correo </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" id="Correo" value= "<?php campo('Correo')?>" class="email" name = "Correo" >
+											<input type="text" class="formulario__grupo-input" id="Correo" value= "<?php campo('Correo')?>" class="email" name = "Correo" required="">
 											</div>
 										    	</div>
 
@@ -204,7 +205,7 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="grupo__Contra">
 											<label for="Nombre" class="formulario__label"> Contraseña </label>
 											<div class="formulario__grupo-input">
-											<input type="password" class="formulario__grupo-input" value= "<?php campo('Contra')?>" id="Contra" name = "Contra">
+											<input type="password" class="formulario__grupo-input" value= "<?php campo('Contra')?>" id="Contra" name = "Contra" required="">
 											</div>
 											  </div>
 											  
@@ -212,7 +213,7 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="grupo__Contra">
 											<label for="Nombre" class="formulario__label"> Confirme la contraseña </label>
 											<div class="formulario__grupo-input">
-											<input type="password" class="formulario__grupo-input" value= "<?php campo('Contra2')?>"  id="Contra2" name = "Contra2">
+											<input type="password" class="formulario__grupo-input" value= "<?php campo('Contra2')?>"  id="Contra2" name = "Contra2" required="">
 											</div>
 											  </div>
 
@@ -220,7 +221,7 @@ require_once('../bd/conexion.php');
 											 <div class="formulario__grupo" id="grupo__Edad">
 											 <label for="Nombre" class="formulario__label"> Edad  </label>
 											 <div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" value= "<?php campo('Edad')?>" id="Edad" name="Edad">
+											<input type="text" class="formulario__grupo-input" value= "<?php campo('Edad')?>" id="Edad" name="Edad" required="">
 											</div>
 											  </div>
 

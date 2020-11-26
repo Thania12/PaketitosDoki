@@ -32,11 +32,11 @@ require_once('../bd/conexion.php');
 <body>
 
 	<!---header-->
-	<header class="w3l-header-nav">
+	<header class="w3l-header-nav" style="background-color: #c8d2dd">
 		<!--/nav-->
 		<nav class="navbar navbar-expand-lg navbar-light px-lg-0 py-0 px-3 stroke">
 			<div class="container">
-				<h1><a class="navbar-brand" href="../index.php"> Paquetitos Doki <span>
+				<h1><a class="navbar-brand" style="background-color: #c8d2dd" href="../index.php"> Paquetitos Doki <span>
 				</span></a></h1>
 				<!-- if logo is image enable this   
 						<a class="navbar-brand" href="#index.php">
@@ -62,7 +62,8 @@ require_once('../bd/conexion.php');
 								<ul>
 									<li><a class="nav-link" href="../viajero/FormularioViajero.php">Viajero</a></li>
 									<li><a class="nav-link" href="../usuario/FormularioUsuario.php">Usuario</a></li>
-									<li><a class="nav-link" href="../klorofil-free-dashboard-template-v2.0/template/page-login.html">Administrativo</a></li>
+									<li><a class="nav-link" href="loginU.php"> Iniciar sesión </a></li>
+                                    <li><a class="nav-link" href="FormularioUsuario.php"> Resgistrarme  </a></li>
 								</ul>
 							</li>
 						</ul>
@@ -114,28 +115,28 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="grupo__Nombre">
 											<label for="Nombre" class="formulario__label"> Nombre(s)</label>
 								        	<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" id= "Nombre" name="Nombre">
+											<input type="text" class="formulario__grupo-input" id= "Nombre" name="Nombre" required="">
 											</div>
 											</div>
 											<!-- Grupo Apellido con validacion --> 
 											<div class="formulario__grupo" id="grupo__Apellido">
 											<label for="Nombre" class="formulario__label"> Apellido </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" id="Apellido" name="Apellido" >
+											<input type="text" class="formulario__grupo-input" id="Apellido" name="Apellido" required="">
 										     </div>
 											  </div>
 											  <!-- Grupo Edad con validacion --> 
 											<div class="formulario__grupo" id="grupo__Edad">
 											<label for="Nombre" class="formulario__label"> Fecha de nacimiento </label>
 											<div class="formulario__grupo-input">
-											<input type="date" class="formulario__grupo-input" id="Edad" name="Edad" >
+											<input type="date" class="formulario__grupo-input" id="Edad" name="Edad" required="" >
 										     </div>
 											  </div>
 											<!-- Grupo Sexo con validacion --> 
 											<div class="formulario__grupo" id="grupo__Sexo">
 											<label for="Nombre" class="formulario__label"> Sexo </label>
 											<div class="formulario__grupo-input">
-											<input type="text"  list="items"class="formulario__grupo-input" id="Sexo" name="Sexo" >
+											<input type="text"  list="items"class="formulario__grupo-input" id="Sexo" name="Sexo" required="">
 											<datalist id="items">
 											<option value="Femenino"> Femenino </option>
 											<option value="Masculino"> Masculino </option>
@@ -146,21 +147,21 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="grupo__Correo">
 											<label for="Nombre" class="formulario__label"> Correo </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" id="Correo" class="email" name = "Correo" >
+											<input type="text" class="formulario__grupo-input" id="Correo" class="email" name = "Correo" required="">
 											</div>
 											  </div>
 											<!-- Grupo Contraseña con validacion --> 
 											<div class="formulario__grupo" id="grupo__Contrasena">
 											<label for="Nombre" class="formulario__label"> Contraseña </label>
 											<div class="formulario__grupo-input">
-											<input type="password" class="formulario__grupo-input" id="Contrasena" name = "Contrasena">
+											<input type="password" class="formulario__grupo-input" id="Contrasena" name = "Contrasena" required="">
 	 										</div>
 											  </div>
 											<!-- Grupo Telefono con validacion --> 
 											<div class="formulario__grupo" id="grupo__Telefono">
 											<label for="Nombre" class="formulario__label"> Telefono  </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input"  id="Telefono" name= "Telefono" >
+											<input type="text" class="formulario__grupo-input"  id="Telefono" name= "Telefono" required="">
 										 	</div>
 											</div>
 									        <!-- Grupo Estado con validacion --> 

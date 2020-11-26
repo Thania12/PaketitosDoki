@@ -22,11 +22,11 @@
 <body>
 
 	<!--w3l-header-->
-	<header class="w3l-header-nav">
+	<header class="w3l-header-nav" style="background-color: #c8d2dd">
 		<!--/nav-->
 		<nav class="navbar navbar-expand-lg navbar-light px-lg-0 py-0 px-3 stroke">
 			<div class="container">
-				<h1><a class="navbar-brand" href="index.php">Paquetitos <span> Doki</span></a></h1>
+				<h1><a class="navbar-brand" style="background-color: #c8d2dd" href="index.php">Paquetitos <span> Doki</span></a></h1>
 				<!-- if logo is image enable this   
 						<a class="navbar-brand" href="#index.php">
 							<img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />

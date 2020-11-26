@@ -20,11 +20,11 @@
 <body>
 
 	<!---header-->
-	<header class="w3l-header-nav">
+	<header class="w3l-header-nav" style="background-color: #c8d2dd">
 		<!--/nav-->
 		<nav class="navbar navbar-expand-lg navbar-light px-lg-0 py-0 px-3 stroke">
 			<div class="container">
-				<h1><a class="navbar-brand" href="index.php"><span>P</span>aquetitos <span>D</span>oki</a></h1>
+				<h1><a class="navbar-brand"  style="background-color: #c8d2dd"href="index.php"><span>P</span>aquetitos <span>D</span>oki</a></h1>
 				<!-- if logo is image enable this   
 						<a class="navbar-brand" href="#index.php">
 							<img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
@@ -36,7 +36,7 @@
 						<span class="fa icon-close fa-times"></span>
 					</button>
 	
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<div class="collapse navbar-collapse" id="navbarSupportedContent" >
 						<ul class="navbar-nav ml-auto">
 							<li class="nav-item active">
 								<a class="nav-link" href="index.php">Inicio</a>
@@ -233,7 +233,7 @@
 						<div class="p-md-5 p-3">
 							<h4><a href="#url"> Envíos planificados </a></h4>
 							<p>Envíos planificados con tiempo  </p>
-							<h6>Desde $99</h6>
+							<h6>Desde $150</h6>
 						</div>
 					</div>
 				</div>
@@ -242,7 +242,7 @@
 						<div class="p-md-5 p-3">
 							<h4><a href="#url"> Seguridad </a></h4>
 							<p> Viajeros calificados. </p>
-							<h6>Desde $99</h6>
+							<h6>Desde $150</h6>
 						</div>
 					</div>
 				</div>
@@ -250,29 +250,29 @@
 			<div class="row quote-grids mt-lg-4 mt-5">
 				<div class="col-lg-7 quote-info">
 					<div class="title-content text-left">
-						<h3 class="hny-title">Cotizar Hoy.</h3>
-						<p class="mt-3 pr-lg-5"> Ingresa los datos de tu envío
-						</p>
+						<h1 class="hny-title" style="color: #6c99cd; border: 3px;">Cotiza tu envio Hoy.</h1>
+						<h3 class="mt-3 pr-lg-5"> Ingresa los datos de tu envío
+						</h3>
 					</div>
 				</div>
 				<!-- COTIZAR -->
 				<div class="col-lg-5 quote-form-content mt-lg-0 mt-5 pt-lg-2">
 					<div class="quote-form p-md-5 p-4 mx-auto mw-100">
 						<h4>Solicitar presupuesto</h4>
-						<form action="#" method="post">
+						<form action="cotiza.php" method="POST">
 							<div class="form-group">
-								<input type="text" class="form-control" id="validationDefault01" placeholder="Tú Nombre"
+								<input type="text" name="nombre" class="form-control" id="validationDefault01" placeholder="Tu Nombre"
 									required="">
 							</div>
 							<div class="form-group two-girds-fm">
-								<input type="text" class="form-control" id="validationDefault02" placeholder="Origen"
+								<input type="text" name="origen" class="form-control" id="validationDefault02" placeholder="Estado de Origen"
 									required="">
-								<input type="text" class="form-control" id="validationDefault02" placeholder="Destino"
+								<input type="text" name="destino" class="form-control" id="validationDefault02" placeholder="Estado Destino"
 									required="">
 							</div>
 
 							<div class="form-group">
-								<textarea name="Comment" class="form-control" placeholder="Mensaje" required=""
+								<textarea name="comentario" class="form-control" placeholder="Caracteristicas del envio" required=""
 									spellcheck="false"></textarea>
 							</div>
 							<!--BOTON PARA CALCULAR PRESUPUESTO-->
