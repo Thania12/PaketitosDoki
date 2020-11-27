@@ -66,7 +66,7 @@ $consulta->bindParam(':Estado_Origen',$estado_origen);
                 
    if($consulta->execute()){
        echo "Envio Registrado";
-       header("Location: ../usuario/Envios.php");
+       header("Location: ../usuario/Pago.php");
    }else{
     echo "Error en la creacion del nuevo envio, intente despues";
    }
