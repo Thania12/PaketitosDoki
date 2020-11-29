@@ -1,6 +1,6 @@
 <?php
-session_start();
 require_once('../bd/conexion.php');
+require 'seleccionados.php';
 
 ?>
 
@@ -51,8 +51,10 @@ require_once('../bd/conexion.php');
 						<ul class="navbar-nav ml-auto">		
 							<li class="nav-item">
 								<ul>
-									<li><a class="nav-link" href="viajesSolicitados.php">Viajes Solicitados</a></li>
-									<li><a class="nav-link" href="misviajes.php">Mis Viajes</a></li>
+									<li><a class="nav-link" href="viajesEnvio.php">Viajes Solicitados</a></li>
+									<li><a class="nav-link" href="cargados.php">Mis Viajes (<?php  
+                               echo (empty($_SESSION['seleccionado']))?0:count($_SESSION['seleccionado']);             
+                                ?>)</a></li>
 									<li><a class="nav-link"   href="loginV.php">Salir</a></li>
 								</ul>
 							</li>
@@ -76,7 +78,8 @@ require_once('../bd/conexion.php');
 							  <div class="singup"> 
 								<div class="title-content text-center">
 								<h2><a> ¡Hola! <?php echo $_SESSION['Nombre']?> </a></h2>
-									<h3 class="sub-title"> Registra tu nuevo viaje </h3>
+	</br> </br>
+									<h4 class="sub-title"> Registra tu nuevo viaje </h4>
 									
 								</div>
 								<div class="d-grid align-form-map mt-lg-5 mt-4">
@@ -178,9 +181,9 @@ require_once('../bd/conexion.php');
 											$id_viajero = isset($_SESSION['ID_Viajero']) ? $_SESSION['ID_Viajero'] : '';
 											?>
 											 <div class="formulario__grupo" id="grupo__id">
-											 <label for="Nombre" class="formulario__label"> Clave de viajero : </label>
+											
 											 <div class="formulario__grupo-input">
-											<input class="formulario__grupo-input"  id="ID_Viajero" name="ID_Viajero" value="<?php echo $id_viajero; ?>"/>
+											<input type="hidden"class="formulario__grupo-input"  id="ID_Viajero" name="ID_Viajero" value="<?php echo $id_viajero; ?>"/>
 											<!-- Grupo boton --> 
 													  <div class="formulario__grupo" id="formulario__grupo-btn-enviar">
 										   <label for="Espacio" class="formulario__label"> </label> 
@@ -193,9 +196,18 @@ require_once('../bd/conexion.php');
                                                         </div>
                                                             </div> 
 															</div>
-                                            <div class="col-md-4 text-center">
-                                                <img style="width: 400px; height: 300px;" src="mapa.jpg" alt="">
-                                            </div>
+                                            <div class="col-md-4">
+                                                
+												<div class="col-md-40 content4-right-info">
+										 <h4 class="text-center" style="color: #4d9aef;"> Encuentra tu viajero compatible </h4>
+											</br> </br><h6> Tus viajes registrados serán información para la administración de Paquetitos Doki, si encontramos coincidencia contigo, nos pondremos en contacto.  </h6>
+										</br> <h6 style="color: #10529b"> > Navega en "Viajes Solicitados" y elige el ideal para tí. </h6>
+										</br> <h6 style="color: #10529b"> > Navega en "Mis viajes" y conoce los viajes que tienes seleccionados. </h6>
+									</br> <img style="width: 400px; height: 300px;" src="mapa.jpg" alt="">
+							</div>
+
+						</div>
+											</div>
                                             </div>
                                         
 											</form>

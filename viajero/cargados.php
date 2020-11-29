@@ -53,7 +53,9 @@
                         <li class="nav-item">
                             <ul>
                                 <li><a class="nav-link" href="viajes.php"> Nuevo Viaje</a></li>
-                                <li><a class="nav-link" href="misviajes.php">Mis Viajes</a></li>
+								<li><a class="nav-link" href="cargados.php">Mis Viajes (<?php  
+                               echo (empty($_SESSION['seleccionado']))?0:count($_SESSION['seleccionado']);             
+                                ?>)</a></li>
                                 <li><a class="nav-link"
                                         href="loginV.php">Salir</a>
                                 </li>
@@ -120,7 +122,7 @@
 		  </div>
 	<?php }?>
 
-
+	</br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> 
         <footer class="w3l-footer-66">
 		<section class="footer-inner-main">
 			<div class="footer-hny-grids py-4">
