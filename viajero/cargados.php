@@ -65,24 +65,66 @@
     </header>
     <div class="title-content text-left">
         <br> <br>
-	<h1 class="title" style="border: 5px"> Selecciona el viaje </h1>
+	<h1 class="title" style="border: 4px"> Viajes seleccionados </h1>
 									
 	</div>
 		<nav id="breadcrumbs" class="breadcrumbs">
 			<div class="container page-wrapper">
 				<a href="../index.php"> Inicio </a> » <span class="breadcrumb_last" aria-current="page">Contacto </span>
 			</div>
-        </nav>
+		</nav>
+		<br>
+	
+		<?php if(!empty($_SESSION['seleccionado'])){?>
 
+		<table class="table table-light table-bordered">
+			<tbody>
+				<tr>
+					<th width="15%" class="text-center"> Origen </th>
+					<th width="15%" class="text-center"> Destino </th>
+					<th width="15%" class="text-center"> Fecha </th>
+					<th width="25%" class="text-center"> Comentario </th>
+					<th width="20%"class="text-center"> Precio </th>
+					<th width="10%" class="text-center"> ---- </th>
+				</tr>
+				<!-- video 13 -->
+				<?php foreach($_SESSION['seleccionado'] as $indice=>$agregado){?>
+				<tr>
+					<td width="15%" class="text-center"> <?php echo $agregado['origen']?> </td>
+					<td width="15%" class="text-center"> <?php echo $agregado['destino']?> </td>
+					<td width="15%" class="text-center"> <?php echo $agregado['fecha']?> </td>
+					<td width="25%" class="text-center"> <?php echo $agregado['comentario']?> </td>
+					<td width="20%" class="text-center"> <?php echo $agregado['precio']?> </td>
+					<td width="10%" >
+						<!-- video 14 TODO ESTO SE PROCESA CON EL CASE
+						DE SELECCIONAR CON EL VALUE DEL BUTTON-->
+					<form action="" method="POST">
+						<!-- aqui se especifica cual es el ID que se debe eliminar-->
+						<input type="hidden" name="id" value ="<?php echo $agregado['id']; ?>">
+						<button 
+						class="btn-danger" 
+						type="submit"
+						name="btnAccion"
+						value="Eliminar"
+						> Eliminar </button> </td>
+				</tr>
+				<?php } ?>
+				
+			</tbody>
 
+		</table>
 
-
+	<?php }else{?>
+          <div class="alert alert-success">
+			  No ha seleccionado viaje
+		  </div>
+	<?php }?>
 
 
         <footer class="w3l-footer-66">
 		<section class="footer-inner-main">
-			<div class="footer-hny-grids py-5">
-				<div class="container py-lg-4">
+			<div class="footer-hny-grids py-4">
+				<div class="container py-lg-3">
 					<div class="text-txt">
 						<div class="right-side">
 							<div class="row sub-columns">

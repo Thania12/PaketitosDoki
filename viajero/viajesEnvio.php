@@ -1,5 +1,6 @@
 <?php 
   include 'conexion.php';
+  include 'seleccionados.php';
 ?>
 
 <!Doctype html>
@@ -52,9 +53,11 @@
                         <li class="nav-item">
                             <ul>
                                 <li><a class="nav-link" href="viajes.php"> Nuevo Viaje</a></li>
-                                <li><a class="nav-link" href="misviajes.php">Mis Viajes</a></li>
+                                <li><a class="nav-link" href="cargados.php">Mis Viajes (<?php  
+                               echo (empty($_SESSION['seleccionado']))?0:count($_SESSION['seleccionado']);             
+                                ?>)</a></li>
                                 <li><a class="nav-link"
-                                        href="loginV.php">Salir</a>
+                                        href="loginV.php">Cerrar sesión</a>
                                 </li>
                             </ul>
                         </li>
@@ -72,7 +75,12 @@
 				<a href="../index.php"> Inicio </a> » <span class="breadcrumb_last" aria-current="page">Contacto </span>
 			</div>
         </nav>
-        
+
+        <?php if($mensaje!=""){?>
+        <div class= "alert alert-success">
+            <?php echo $mensaje; ?>
+        </div>
+        <?php } ?>
         <div class="row" >
             <?php
             $sentencia = $link->prepare("SELECT * FROM `nuevo_envio` ");
@@ -100,9 +108,18 @@
                          <h6 class="card-title" style="color:red;"> De:  <?php echo $envios['Estado_Origen'];?>  a <?php echo $envios['Estado_Destino'];?> </h6>
                          <h5 class="card-title"> $ <?php echo $envios['Precio_final'];?> </h5>
                          <p class="card-text"> <?php echo $envios['Comentario'];?></p>
+                         <form action="" method="POST">
+                         <input type="hidden" name="id" id="id" value= "<?php echo $envios['ID_NEnvio'];?>">
+                         <input type="hidden" name="origen" id="origen" value= "<?php echo $envios['Estado_Origen'];?>">
+                         <input type="hidden" name="destino" id="destino" value= "<?php echo $envios['Estado_Destino'];?>">
+                         <input type="hidden" name="fecha" id="fecha" value= "<?php echo $envios['Fecha_Envio'];?>">
+                         <input type="hidden" name="comentario" id="comentario" value= "<?php echo $envios['Comentario'];?>">
+                         <input type="hidden" name="precio" id="precio" value= "<?php echo $envios['Precio_final'];?>">
+                         <input type="hidden" name="idc" id="idc" value= "<?php echo $envios['ID_Cliente'];?>">
                          <button class="btn btn-primary" name="btnAccion" value="Agregar" type="submit"> 
                          Seleccionar viaje
                          </button>
+                         </form>
                      </div>
                     </div>
                  </div>
@@ -115,5 +132,109 @@
     
     });
 </script>
+
+<footer class="w3l-footer-66">
+		<section class="footer-inner-main">
+			<div class="footer-hny-grids py-5">
+				<div class="container py-lg-4">
+					<div class="text-txt">
+						<div class="right-side">
+							<div class="row sub-columns">
+								<div class="col-lg-4 col-md-6 sub-one-left pr-lg-4">
+									<h2><a class="navbar-brand" href="index.php">Paquetitos<span> Doki </span></a></h2>
+									<!-- if logo is image enable this   
+									<a class="navbar-brand" href="#index.php">
+										<img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+									</a> -->
+									<p class="pr-lg-4"> Contactanos para más información en nuestras redes sociales </p>
+									<div class="columns-2">
+										<ul class="social">
+											<li><a href="#facebook"><span class="fa fa-facebook"
+														aria-hidden="true"></span></a>
+											</li>
+										
+											<li><a href="#twitter"><span class="fa fa-twitter"
+														aria-hidden="true"></span></a>
+											</li>
+										
+										</ul>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-6 sub-one-left mid-footer-gd">
+									<div class="sub-two-right">
+										<h6>  Menú  </h6>
+										<ul>
+											<li><a href="viajes.php"><span
+														class="fa fa-angle-right mr-2"></span>Viajes </a>
+											</li>
+											<li><a href="viajesSolicitados.php"><span
+														class="fa fa-angle-right mr-2"></span>Viajes solicitados  </a>
+											</li>
+											<li><a href="misviajes.php"><span
+														class="fa fa-angle-right mr-2"></span>Mis viajes </a></li>
+											
+										</ul>
+									</div>
+			
+								</div>
+								
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="below-section">
+				<div class="container">
+					<div class="copyright-footer">
+						<div class="columns text-lg-left">
+							<p>© 2020 Paquetitos Doki. Todos los derechos reservados  <a
+									href="https://w3layouts.com"> Bienvenido </a></p>
+						</div>
+						<ul class="columns text-lg-right">
+							<li><a href="#"> Politica de Privacidad </a>
+							</li>
+							<li><a href="about.php"> Acerca de nosotros </a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		<!-- copyright -->
+		<!-- move top -->
+		<button onclick="topFunction()" id="movetop" title="Go to top">
+			<span class="fa fa-arrow-up" aria-hidden="true"></span>
+		</button>
+		<script>
+			// When the user scrolls down 20px from the top of the document, show the button
+			window.onscroll = function () {
+				scrollFunction()
+			};
+
+			function scrollFunction() {
+				if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+					document.getElementById("movetop").style.display = "block";
+				} else {
+					document.getElementById("movetop").style.display = "none";
+				}
+			}
+
+			// When the user clicks on the button, scroll to the top of the document
+			function topFunction() {
+				document.body.scrollTop = 0;
+				document.documentElement.scrollTop = 0;
+			}
+		</script>
+		<!-- /move top -->
+
+	</section>
+</footer>
+<!--//footer-66 -->
+
+</body>
+
+</html>
+<script src="../assets/js/jquery-3.3.1.min.js"></script>
 </body>
 </html>

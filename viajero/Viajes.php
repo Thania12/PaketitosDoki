@@ -211,7 +211,7 @@ require_once('../bd/conexion.php');
 														 border-radius: 10px;
 														 cursor: pointer;
 														 float: right;
-														 background: #;
+														 background: #5e9ad6;
 														 text-align: center;
 														 
 														}
