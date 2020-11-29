@@ -75,7 +75,7 @@ require_once('../bd/conexion.php');
 	<!-- /breadcrumbs -->
 		<nav id="breadcrumbs" class="breadcrumbs">
 			<div class="container page-wrapper">
-				<a href="../index.php"> Inicio </a> » <span class="breadcrumb_last" aria-current="page">Contacto </span>
+				<a href="../index.php"> Inicio . </a> » <span class="breadcrumb_last" aria-current="page">Contacto </span>
 			</div>
 		</nav>
 	<!-- //breadcrumbs -->
@@ -249,7 +249,7 @@ require_once('../bd/conexion.php');
 														 border-radius: 10px;
 														 cursor: pointer;
 														 float: right;
-														 background: #;
+														 background: #5e9ad6;
 														 text-align: center;
 														 
 														}
