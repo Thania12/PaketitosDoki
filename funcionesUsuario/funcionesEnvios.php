@@ -55,14 +55,14 @@
 			}
 			
 
-    $consulta = $link -> prepare("INSERT INTO nuevo_envio ( Estado_Origen, Estado_Destino, Fecha_Envio, Comentario, ID_Cliente, Precio_final)
-    VALUES (:Estado_Origen, :Estado_Destino, :Fecha_Envio, :Comentario, :ID_Cliente, '$precioFinal')");
-
-$consulta->bindParam(':Estado_Origen',$estado_origen);
+    $consulta = $link -> prepare("INSERT INTO nuevoenvio ( ID_Cliente,Estado_Origen, Estado_Destino, Fecha_Envio, Comentario, Precio_final)
+    VALUES ( :ID_Cliente,:Estado_Origen, :Estado_Destino, :Fecha_Envio, :Comentario, '$precioFinal')");
+$consulta ->bindParam(':ID_Cliente',$id);
+  $consulta->bindParam(':Estado_Origen',$estado_origen);
   $consulta ->bindParam(':Estado_Destino',$estado_destino);
    $consulta ->bindParam(':Fecha_Envio',$fecha_envio);
    $consulta -> bindParam(':Comentario',$comentario);
-   $consulta ->bindParam(':ID_Cliente',$id);
+   
                 
    if($consulta->execute()){
        echo "Envio Registrado";

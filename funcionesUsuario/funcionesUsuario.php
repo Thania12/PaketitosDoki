@@ -11,14 +11,14 @@ function registro(){
     //$edadc = $edad_diff -> format('%y');
     $sexo = limpiar("Sexo");
     $correo = limpiar($_POST['Correo']);
-    $contrasena = limpiar($_POST['Contrasena']);
+    $contrasena = limpiar($_POST['Contra']);
     $passHash = password_hash($contrasena, PASSWORD_BCRYPT);
     $telefono = limpiar($_POST['Telefono']);
     $estado_origen = limpiar($_POST['Estado_Origen']);
  
     password_verify($contrasena, $passHash);
     $consulta = $link -> prepare("INSERT INTO cliente (Nombre, Apellido, Edad, Sexo, 
-    Correo, Contrasena, Telefono, Estado_Origen) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)");
+    Correo, Contra, Telefono, Estado_Origen) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)");
     echo getcwd();
     $consulta -> bind_param("ssssssss", $nombre, $apellido, $edad, $sexo, $correo, $passHash, $telefono, $estado_origen);
      $consulta -> execute();

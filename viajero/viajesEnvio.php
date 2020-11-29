@@ -57,7 +57,7 @@
                                echo (empty($_SESSION['seleccionado']))?0:count($_SESSION['seleccionado']);             
                                 ?>)</a></li>
                                 <li><a class="nav-link"
-                                        href="loginV.php">Cerrar sesión</a>
+                                        href="salir.php">Cerrar sesión</a>
                                 </li>
                             </ul>
                         </li>
@@ -83,7 +83,7 @@
         <?php } ?>
         <div class="row" >
             <?php
-            $sentencia = $link->prepare("SELECT * FROM `nuevo_envio` ");
+            $sentencia = $link->prepare("SELECT * FROM `nuevoenvio` ");
             $sentencia->execute();
             $listaViajes =$sentencia->fetchAll(PDO::FETCH_ASSOC);
            // print_r($listaViajes);

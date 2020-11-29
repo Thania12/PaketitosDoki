@@ -55,9 +55,10 @@
                                 <li><a class="nav-link" href="viajes.php"> Nuevo Viaje</a></li>
 								<li><a class="nav-link" href="cargados.php">Mis Viajes (<?php  
                                echo (empty($_SESSION['seleccionado']))?0:count($_SESSION['seleccionado']);             
-                                ?>)</a></li>
+								?>)</a></li>
+								<li><a class="nav-link" href="viajesEnvio.php">Viajes Solicitados</a></li>
                                 <li><a class="nav-link"
-                                        href="loginV.php">Salir</a>
+                                        href="salir.php">Cerrar Sesión </a>
                                 </li>
                             </ul>
                         </li>

@@ -17,8 +17,7 @@ function registro(){
 
 
     $consulta = $link -> prepare("INSERT INTO viajero (Nombre, Apellido, Domicilio, Fecha_registro,RFC, Telefono, Correo, Contra, Edad) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $consulta -> bind_param("sssssssss", $nombre, $apellido, $domicilio, $fecha_registro, $rfc, $telefono, $correo, $passHash, $edad);
-    
+    $consulta -> bind_param("sssssssss", $nombre, $apellido, $domicilio, $fecha_registro, $rfc, $telefono, $correo, $passHash, $edad);    
     $consulta -> execute();
      $resultado = $consulta -> affected_rows;
      $consulta -> free_result();

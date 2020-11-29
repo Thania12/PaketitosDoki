@@ -55,7 +55,7 @@ require 'seleccionados.php';
 									<li><a class="nav-link" href="cargados.php">Mis Viajes (<?php  
                                echo (empty($_SESSION['seleccionado']))?0:count($_SESSION['seleccionado']);             
                                 ?>)</a></li>
-									<li><a class="nav-link"   href="loginV.php">Salir</a></li>
+									<li><a class="nav-link"   href="salir.php">Salir</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -183,7 +183,7 @@ require 'seleccionados.php';
 											 <div class="formulario__grupo" id="grupo__id">
 											
 											 <div class="formulario__grupo-input">
-											<input type="hidden"class="formulario__grupo-input"  id="ID_Viajero" name="ID_Viajero" value="<?php echo $id_viajero; ?>"/>
+											<input type="text"class="formulario__grupo-input"  id="ID_Viajero" name="ID_Viajero" value="<?php echo $id_viajero; ?>"/>
 											<!-- Grupo boton --> 
 													  <div class="formulario__grupo" id="formulario__grupo-btn-enviar">
 										   <label for="Espacio" class="formulario__label"> </label> 

@@ -54,7 +54,7 @@
 				</div>
 
 				<div class="control-group">
-				<input type="password" class="login-field" name="Contrasena" value="" placeholder="Contraseña" id="login-pass">
+				<input type="password" class="login-field" name="Contra" value="" placeholder="Contraseña" id="login-pass">
 				<label class="login-field-icon fui-lock" for="Iniciar"></label>
 				</div>
 

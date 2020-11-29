@@ -8,20 +8,22 @@
     $id = ($_POST['ID_Viajero']);
  
     
-    $consulta = $link -> prepare("INSERT INTO nuevo_viaje (Estado_Origen, Estado_Destino, Fecha_Viaje,ID_Viajero)
-    VALUES (:Estado_Origen, :Estado_Destino, :Fecha_Viaje, :ID_Viajero)");
+    $consulta = $link -> prepare("INSERT INTO nuevoviaje (ID_Viajero, Estado_Origen, Estado_Destino, Fecha_Viaje)
+    VALUES (:ID_Viajero, :Estado_Origen, :Estado_Destino, :Fecha_Viaje)");
 
+   $consulta ->bindParam(':ID_Viajero',$id);
    $consulta->bindParam(':Estado_Origen',$estado_origen);
    $consulta ->bindParam(':Estado_Destino',$estado_destino);
    $consulta ->bindParam(':Fecha_Viaje',$fecha_viaje);
-   $consulta ->bindParam(':ID_Viajero',$id);
+  
    
                 
    if($consulta->execute()){
        echo "Viaje Registrado";
-       header("Location: ../viajero/misviajes.php");
+       header("Location: ../viajero/viajesEnvio.php");
    }else{
-    echo "Error en el registro";
+    echo "<script> alert ('Ya tiene un viaje registrado...');</script>";
+    echo $id;
    }
 ?>
    

@@ -154,7 +154,7 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="grupo__Contrasena">
 											<label for="Nombre" class="formulario__label"> Contraseña </label>
 											<div class="formulario__grupo-input">
-											<input type="password" class="formulario__grupo-input" id="Contrasena" name = "Contrasena" required="">
+											<input type="password" class="formulario__grupo-input" id="Contra" name = "Contra" required="">
 	 										</div>
 											  </div>
 											<!-- Grupo Telefono con validacion --> 
@@ -228,7 +228,7 @@ require_once('../bd/conexion.php');
 														 border-radius: 10px;
 														 cursor: pointer;
 														 float: right;
-														 background: #;
+														 background: #5e9ad6;
 														 text-align: center;
 														 
 														}

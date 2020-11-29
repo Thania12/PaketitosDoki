@@ -2,11 +2,11 @@
     session_start(); 
     include ("conexion.php");
     $Correo = $_POST['Correo'];
-    $Contrasena= $_POST['Contrasena'];
+    $Contra= $_POST['Contra'];
     $consulta = $link->prepare('SELECT * from cliente where
-                            Correo = ? and Contrasena =?;');
+                            Correo = ? and Contra =?;');
 
-    $consulta->execute([$Correo, $Contrasena]);
+    $consulta->execute([$Correo, $Contra]);
     $datos = $consulta->fetch(PDO::FETCH_OBJ);
     
     if($datos == FALSE ){
@@ -19,4 +19,4 @@
      header('Location: Envios.php');
     }
  ?>
-     <a href="../funcionesUsuario.php"></a>;
+     <a href="funcionesViajero.php"></a>;

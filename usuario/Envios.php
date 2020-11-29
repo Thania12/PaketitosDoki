@@ -3,7 +3,7 @@ session_start();
 require_once('../bd/conexion.php');
 
 ?>
-
+ 
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -54,7 +54,7 @@ require_once('../bd/conexion.php');
 								<ul>
 									<li><a class="nav-link" href="enviosSolicitados.php">Solicitudes</a></li>
 									<li><a class="nav-link" href="misenvios.php">Mis Envios</a></li>
-									<li><a class="nav-link" href="../klorofil-free-dashboard-template-v2.0/template/page-login.html">Salir</a></li>
+									<li><a class="nav-link" href="salir.php">Cerrar sesión </a></li>
 								</ul>
 							</li>
 						</ul>
@@ -179,20 +179,13 @@ require_once('../bd/conexion.php');
 											<i class="formulario__validacion-estado fas fa-times-circle"></i>
 											</div>
 											</div>
+										
 											<?php
-											$id_cliente = isset($_SESSION['ID_Cliente']) ? $_SESSION['ID_Cliente'] : '';
+											$id = isset($_SESSION['ID_Cliente']) ? $_SESSION['ID_Cliente'] : '';
 											?>
-
-	<?php 
-											
-  			
-		?>
-											
 											 <div class="formulario__grupo" id="grupo__id">
-											 <label for="Nombre" class="formulario__label"> Tu Clave de Usuario : </label>
 											 <div class="formulario__grupo-input">
-											<input class="formulario__grupo-input"  id="ID_Cliente" name="ID_Cliente" value="<?php echo $id_cliente; ?>"/>
-											
+											<input type="hidden"class="formulario__grupo-input"  id="ID_Cliente" name="ID_Cliente" value="<?php echo $id; ?>"/>
 											<!-- Grupo boton --> 
 											<div class="formulario__grupo" id="formulario__grupo-btn-enviar">
 										   <label for="Espacio" class="formulario__label"> </label> 
@@ -222,7 +215,7 @@ require_once('../bd/conexion.php');
 														 border-radius: 10px;
 														 cursor: pointer;
 														 float: right;
-														 background: #;
+														 background: #5e9ad6;
 														 text-align: center;
 														 
 														}
