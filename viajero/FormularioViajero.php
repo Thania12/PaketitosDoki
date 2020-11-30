@@ -120,17 +120,15 @@ require_once('../bd/conexion.php');
 								<div class="d-grid align-form-map mt-lg-5 mt-4">
 										<!-- Grupo Nombre con validacion --> 
 											<div class="formulario__grupo" id="grupo__Nombre">
-											<label for="Nombre" class="formulario__label"> Nombre(s)</label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" value= "<?php campo('Nombre')?>" id= "Nombre" name="Nombre" required="">										
+											<input type="text" class="formulario__grupo-input" placeholder="Nombre(s)" value= "<?php campo('Nombre')?>" id= "Nombre" name="Nombre" required="">										
 											</div>
 											    </div>
 
                                       	<!-- Grupo Apellido con validacion --> 
 											<div class="formulario__grupo" id="grupo__Apellido">
-											<label for="Nombre" class="formulario__label"> Apellido </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input"  value= "<?php campo('Apellido')?>" id="Apellido" name="Apellido" required="" >
+											<input type="text" class="formulario__grupo-input" placeholder="Apellido" value= "<?php campo('Apellido')?>" id="Apellido" name="Apellido" required="" >
 										    </div>
 											 </div>
 
@@ -179,49 +177,44 @@ require_once('../bd/conexion.php');
 										    
 										    <!-- Grupo RFC con validacion --> 
 											<div class="formulario__grupo" id="grupo__RFC">
-											<label for="Nombre" class="formulario__label"> RFC </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" value= "<?php campo('RFC')?>" id="RFC" name="RFC" required="">
+											<input type="text" class="formulario__grupo-input" placeholder="RFC" value= "<?php campo('RFC')?>" id="RFC" name="RFC" required="">
 											</div>
 										    	</div>
 											
 									       <!-- Grupo Telefono con validacion --> 
 											<div class="formulario__grupo" id="grupo__Telefono">
-											<label for="Nombre" class="formulario__label"> Telefono  </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" value= "<?php campo('Telefono')?>" id="Telefono" name= "Telefono" required="" >
+											<input type="text" class="formulario__grupo-input" placeholder="Teléfono" value= "<?php campo('Telefono')?>" id="Telefono" name= "Telefono" required="" >
 											</div>
 											   </div>
 											
 									       <!-- Grupo Correo con validacion --> 
 											<div class="formulario__grupo" id="grupo__Correo">
-											<label for="Nombre" class="formulario__label"> Correo </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" id="Correo" value= "<?php campo('Correo')?>" class="email" name = "Correo" required="">
+											<input type="text" class="formulario__grupo-input" placeholder ="correo@correo.com" id="Correo" value= "<?php campo('Correo')?>" class="email" name = "Correo" required="">
 											</div>
 										    	</div>
 
 											    <!-- Grupo Contra con validacion --> 
 											<div class="formulario__grupo" id="grupo__Contra">
-											<label for="Nombre" class="formulario__label"> Contraseña </label>
 											<div class="formulario__grupo-input">
-											<input type="password" class="formulario__grupo-input" value= "<?php campo('Contra')?>" id="Contra" name = "Contra" required="">
+											<input type="password" class="formulario__grupo-input" placeholder="Contraseña" value= "<?php campo('Contra')?>" id="Contra" name = "Contra" required="">
 											</div>
 											  </div>
 											  
 											 <!-- Grupo Confirmar contra--> 
 											<div class="formulario__grupo" id="grupo__Contra">
-											<label for="Nombre" class="formulario__label"> Confirme la contraseña </label>
 											<div class="formulario__grupo-input">
-											<input type="password" class="formulario__grupo-input" value= "<?php campo('Contra2')?>"  id="Contra2" name = "Contra2" required="">
+											<input type="password" class="formulario__grupo-input" placeholder="Confirma la contraseña" value= "<?php campo('Contra2')?>"  id="Contra2" name = "Contra2" required="">
 											</div>
 											  </div>
 
 											 <!-- Grupo Edad con validacion --> 
 											 <div class="formulario__grupo" id="grupo__Edad">
-											 <label for="Nombre" class="formulario__label"> Edad  </label>
 											 <div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" value= "<?php campo('Edad')?>" id="Edad" name="Edad" required="">
+											 <label for="Nombre" class="formulario__label"> Fecha de Nacimiento </label>
+											<input type="date" class="formulario__grupo-input" placeholder="Fecha de nacimiento" value= "<?php campo('Edad')?>" id="Edad" name="Edad" required="">
 											</div>
 											  </div>
 

@@ -1,4 +1,5 @@
 <?php
+
 require_once('../bd/conexion.php');
 require 'seleccionados.php';
 
@@ -73,7 +74,16 @@ require 'seleccionados.php';
 							<!--form para registro del viajero-->
 								<!--Todo separado por grupos para el JQuery-->
 						<div class="form-inner-cont">
-
+				  <?php  
+				  
+				  $consulta = $link->prepare('SELECT * from cliente');
+				  $datos = $consulta->fetch(PDO::FETCH_OBJ);
+				  $_SESSION['Correo'];
+				  $_SESSION['ID_Viajero'];
+				  $_SESSION['Nombre'];
+				 
+				 
+				 ?>
 							<form  class="input-field" action="../funciones/funcionesViajero.php" method= "POST" id="formulario">
 							  <div class="singup"> 
 								<div class="title-content text-center">

@@ -79,24 +79,29 @@ require_once('../bd/conexion.php');
 		</nav>
 	<!-- //breadcrumbs -->
 	<!-- /contact-form -->
-</section>
-<!-- //feature1 -->
-<section class="w3l-specification-6">
-	<div class="specification-6-mian py-5">
-		<div class="container py-lg-4">
-			<div class="row story-6-grids text-left">
-				<div class="col-lg-5 story-gd">
+	<section class="w3l-specification-6">
+		<div class="specification-6-mian py-5">
+			<div class="container py-lg-4">
+			
+				<div class="row story-4-grids text-left">
+					<div class="col-lg-5 story-gd">
 					<div class="title-content text-center">
-						<h3 class="hny-title"> Bienvenido </h3>
+							<h3 color: #66B2FF> Registrate como Usuario </h3>
+							<br> <br> 
+						</div>
+						<div class="title-content text-center">
+						<img src="../assets/images/e2.jpg" class="img-fluid" alt="/">
+						<br>
+						<br> <h6 class="hny-title"> Realiza envios a todo el país. </h6> </br>
+						</div>
+						<div class="title-content text-center">
+							<div class="columns-2">
+							<img src="../assets/images/e1.jpg" class="img-fluid" alt="/">
+							<br>
+							<br> <h6 class="hny-title"> Resigstra tu envío. </h6> </br>							</ul>
+						</div>
+						</div>
 					</div>
-					<img src="../assets/images/e1.jpg" class="img-fluid" alt="/">
-					<div class="title-content text-center">
-						<div class="columns-2">
-						<ul> <li><a class="hny-title"> Obten precios justos </a> </li>
-						<li> <a class="hny-title"> Enlaza tu envio con un viajero </a> </li>							</ul>
-					</div>
-					</div>
-				</div>
 				<div class="col-lg-7 story-gd pl-lg-4">
 						<div class="form-inner-cont">
 						<!--FORM PARA REGISTRO DE USUARIOS AQUI VA EL METHOD Y ESO-->
@@ -113,16 +118,14 @@ require_once('../bd/conexion.php');
 								<div class="d-grid align-form-map mt-lg-5 mt-4">
 										<!-- Grupo Nombre con validacion --> 
 											<div class="formulario__grupo" id="grupo__Nombre">
-											<label for="Nombre" class="formulario__label"> Nombre(s)</label>
-								        	<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" id= "Nombre" name="Nombre" required="">
+										    <div class="formulario__grupo-input">
+											<input type="text" class="formulario__grupo-input" placeholder="Nombre(s)" id= "Nombre" name="Nombre" required="">
 											</div>
 											</div>
 											<!-- Grupo Apellido con validacion --> 
 											<div class="formulario__grupo" id="grupo__Apellido">
-											<label for="Nombre" class="formulario__label"> Apellido </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" id="Apellido" name="Apellido" required="">
+											<input type="text" class="formulario__grupo-input" placeholder="Apellidos" id="Apellido" name="Apellido" required="">
 										     </div>
 											  </div>
 											  <!-- Grupo Edad con validacion --> 
@@ -134,9 +137,8 @@ require_once('../bd/conexion.php');
 											  </div>
 											<!-- Grupo Sexo con validacion --> 
 											<div class="formulario__grupo" id="grupo__Sexo">
-											<label for="Nombre" class="formulario__label"> Sexo </label>
 											<div class="formulario__grupo-input">
-											<input type="text"  list="items"class="formulario__grupo-input" id="Sexo" name="Sexo" required="">
+											<input type="text"  list="items" placeholder="Sexo" class="formulario__grupo-input" id="Sexo" name="Sexo" required="">
 											<datalist id="items">
 											<option value="Femenino"> Femenino </option>
 											<option value="Masculino"> Masculino </option>
@@ -145,23 +147,26 @@ require_once('../bd/conexion.php');
 								  			</div>
 											<!-- Grupo Correo con validacion --> 
 											<div class="formulario__grupo" id="grupo__Correo">
-											<label for="Nombre" class="formulario__label"> Correo </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input" id="Correo" class="email" name = "Correo" required="">
+											<input type="text" class="formulario__grupo-input" placeholder="correo@correo.com" id="Correo" class="email" name = "Correo" required="">
 											</div>
 											  </div>
 											<!-- Grupo Contraseña con validacion --> 
 											<div class="formulario__grupo" id="grupo__Contrasena">
-											<label for="Nombre" class="formulario__label"> Contraseña </label>
 											<div class="formulario__grupo-input">
-											<input type="password" class="formulario__grupo-input" id="Contra" name = "Contra" required="">
+											<input type="password" class="formulario__grupo-input" placeholder="Crea una contraseña" id="Contra" name = "Contra" required="">
+	 										</div>
+											  </div>
+											<!-- Grupo Contraseña con validacion --> 
+											<div class="formulario__grupo" id="grupo__Contrasena">
+											<div class="formulario__grupo-input">
+											<input type="password" class="formulario__grupo-input" placeholder="Confirma la contraseña" id="Contra2" name = "Contra2" required="">
 	 										</div>
 											  </div>
 											<!-- Grupo Telefono con validacion --> 
 											<div class="formulario__grupo" id="grupo__Telefono">
-											<label for="Nombre" class="formulario__label"> Telefono  </label>
 											<div class="formulario__grupo-input">
-											<input type="text" class="formulario__grupo-input"  id="Telefono" name= "Telefono" required="">
+											<input type="text" class="formulario__grupo-input" placeholder="Teléfono"  id="Telefono" name= "Telefono" required="">
 										 	</div>
 											</div>
 									        <!-- Grupo Estado con validacion --> 

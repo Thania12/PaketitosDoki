@@ -12,7 +12,7 @@ function registro(){
     $telefono = limpiar($_POST['Telefono']);
     $correo = limpiar($_POST['Correo']);
     $contra = limpiar($_POST['Contra']);
-    $passHash = password_hash($contra, PASSWORD_BCRYPT);
+    $passHash = hash('sha512', $contra);
     $edad = limpiar($_POST['Edad']);
 
 
