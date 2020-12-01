@@ -3,8 +3,9 @@
     include ("conexion.php");
     $Correo = $_POST['Correo'];
     $Contra= $_POST['Contra'];
-    $consulta = $link->prepare('SELECT * from cliente where
-                            Correo = ? and Contra =?;');
+    $Contra = hash('sha512', $Contra);
+    $consulta = $link->prepare("SELECT * from cliente where
+                            Correo = '$Correo' and Contra = '$Contra';");
 
     $consulta->execute([$Correo, $Contra]);
     $datos = $consulta->fetch(PDO::FETCH_OBJ);

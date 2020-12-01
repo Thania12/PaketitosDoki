@@ -7,6 +7,7 @@
     $fecha_envio = ($_POST['Fecha_Envio']);
     $comentario = ($_POST['Comentario']);
     $id = ($_POST['ID_Cliente']);
+    $correo = ($_POST['correo']);
     $ZCT = 1;
     $ZST = 0;
     $ZNT = 2;
@@ -52,14 +53,16 @@
                 $precioFinal = 200;
             } else{
                 $precioFinal = 250;
-			}
-			
+            }
+            
+
+    
 
     $consulta = $link -> prepare("INSERT INTO nuevoenvio ( ID_Cliente,Estado_Origen, Estado_Destino, Fecha_Envio, Comentario, Precio_final)
     VALUES ( :ID_Cliente,:Estado_Origen, :Estado_Destino, :Fecha_Envio, :Comentario, '$precioFinal')");
-$consulta ->bindParam(':ID_Cliente',$id);
-  $consulta->bindParam(':Estado_Origen',$estado_origen);
-  $consulta ->bindParam(':Estado_Destino',$estado_destino);
+   $consulta ->bindParam(':ID_Cliente',$id);
+   $consulta->bindParam(':Estado_Origen',$estado_origen);
+   $consulta ->bindParam(':Estado_Destino',$estado_destino);
    $consulta ->bindParam(':Fecha_Envio',$fecha_envio);
    $consulta -> bindParam(':Comentario',$comentario);
    

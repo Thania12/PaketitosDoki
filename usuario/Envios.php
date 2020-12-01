@@ -61,7 +61,6 @@ require_once('../bd/conexion.php');
 		</nav>
 		<!--//nav-->
 	</header>
-	
 	<section class="w3l-specification-6">
 		<div class="specification-6-mian py-5">
 			<div class="container py-lg-4">
@@ -72,11 +71,14 @@ require_once('../bd/conexion.php');
 							<!--form para registro del viajero-->
 								<!--Todo separado por grupos para el JQuery-->
 						<div class="form-inner-cont">
-							<form  class="input-field" action="../funcionesUsuario/funcionesEnvios.php" method= "POST" id="formulario">
+							<form  class="input-field" action="../funciones/funcionesViajero.php" method= "POST" id="formulario">
 							  <div class="singup"> 
-							  <h2><a> ¡Hola! <?php echo $_SESSION['Nombre']?> </a></h2>
-									<h3 class="sub-title"> Registra tu nuevo envio </h3>
-									</div>
+								<div class="title-content text-center">
+								<h2><a> ¡Hola! <?php echo $_SESSION['Nombre']?> </a></h2>
+	</br> </br>
+									<h4 class="sub-title"> Registra tu nuevo envio </h4>
+									
+								</div>
 								<div class="d-grid align-form-map mt-lg-5 mt-4">
 										<!-- Grupo Nombre con validacion --> 
 											<div class="formulario__grupo" id="grupo__Nombre">
@@ -179,6 +181,17 @@ require_once('../bd/conexion.php');
 											<i class="formulario__validacion-estado fas fa-times-circle"></i>
 											</div>
 											</div>
+
+											 <!-- Correo para pagar --> 
+											 <div class="formulario__grupo" id="grupo__correo">
+											 <div class="formulario__grupo-input">
+											<input style="  background-color: #a4eaaa;" type="email" class="form-control"  id="correo" name="correo" placeholder="Ingrese su correo" required>
+											<small style="color: red;" id="emailHelp" class="form-text text-muted">
+												Correo de cuenta PayPal
+											</small>
+											</div>
+											
+											</div>
 										
 											<?php
 											$id = isset($_SESSION['ID_Cliente']) ? $_SESSION['ID_Cliente'] : '';
@@ -189,7 +202,7 @@ require_once('../bd/conexion.php');
 											<!-- Grupo boton --> 
 											<div class="formulario__grupo" id="formulario__grupo-btn-enviar">
 										   <label for="Espacio" class="formulario__label"> </label> 
-										   <input type="submit" id="register"  name="register" value="Registrar" /> 
+										   <input type="submit" id="register"  name="register" value="Proceder a pagar >> " /> 
 										  <p class="formulario__mensaje-exito" id="formulario__mensaje-exito"> Envio registrado </p>
 										  </div>
 												</div>
@@ -198,13 +211,22 @@ require_once('../bd/conexion.php');
                                                         </div>
                                                             </div> 
 															</div>
-                                            <div class="col-md-4 text-center">
-                                                <img style="width: 400px; height: 300px;" src="paqueteria.jpg" alt="">
-                                            </div>
+                                            <div class="col-md-4">
+                                                
+												<div class="col-md-40 content4-right-info">
+										 <h4 class="text-center" style="color: #4d9aef;"> Revisa esta información. </h4>
+											</br> </br><h6> El costo de tu envio, equivale a tu cotización.  </h6>
+										</br> <h6 style="color: #10529b"> > Navega en "Mis envios" y visualiza tus envios pagados. </h6>
+									</br> <img style="width: 400px; height: 300px;" src="../assets/images/b3.jpg" alt="">
+							</div>
+
+						</div>
+											</div>
                                             </div>
                                         
-										</form>
-									        </form>
+											</form>
+											
+											</form>
 			
 												<style> 
 													input[type=button] {

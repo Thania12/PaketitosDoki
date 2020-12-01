@@ -186,6 +186,7 @@
 	<!-- features-4 -->
 	<!--/video-6-->
 	<section class="w3l-video-6">
+	<h2 style=" text-align:center; "> Reproduce el Video y obten información de embalaje para que tus envios sean seguros. </h2>
 		<div class="container-fluid px-0">
 			<div class="history-info position-relative">
 				<div class="heading text-center mx-auto">
@@ -198,8 +199,8 @@
 						</a>
 						<!-- dialog itself, mfp-hide class is required to make dialog hidden -->
 						<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-							<iframe src="https://player.vimeo.com/video/22385411" frameborder="0"
-								allow="autoplay; fullscreen" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/rBaaGSBtXd8?start=10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 						</div>
 						<!--//popup-->
 					</div>

@@ -1,7 +1,6 @@
 <?php
-
+session_start();
 require_once('../bd/conexion.php');
-require 'seleccionados.php';
 
 ?>
 
@@ -52,10 +51,7 @@ require 'seleccionados.php';
 						<ul class="navbar-nav ml-auto">		
 							<li class="nav-item">
 								<ul>
-									<li><a class="nav-link" href="viajesEnvio.php">Viajes Solicitados</a></li>
-									<li><a class="nav-link" href="cargados.php">Mis Viajes (<?php  
-                               echo (empty($_SESSION['seleccionado']))?0:count($_SESSION['seleccionado']);             
-                                ?>)</a></li>
+									<li><a class="nav-link" href="viajesEnvio.php">Viajes Solicitados</a></li> 
 									<li><a class="nav-link"   href="salir.php">Salir</a></li>
 								</ul>
 							</li>
@@ -74,16 +70,6 @@ require 'seleccionados.php';
 							<!--form para registro del viajero-->
 								<!--Todo separado por grupos para el JQuery-->
 						<div class="form-inner-cont">
-				  <?php  
-				  
-				  $consulta = $link->prepare('SELECT * from cliente');
-				  $datos = $consulta->fetch(PDO::FETCH_OBJ);
-				  $_SESSION['Correo'];
-				  $_SESSION['ID_Viajero'];
-				  $_SESSION['Nombre'];
-				 
-				 
-				 ?>
 							<form  class="input-field" action="../funciones/funcionesViajero.php" method= "POST" id="formulario">
 							  <div class="singup"> 
 								<div class="title-content text-center">
@@ -193,7 +179,7 @@ require 'seleccionados.php';
 											 <div class="formulario__grupo" id="grupo__id">
 											
 											 <div class="formulario__grupo-input">
-											<input type="text"class="formulario__grupo-input"  id="ID_Viajero" name="ID_Viajero" value="<?php echo $id_viajero; ?>"/>
+											<input type="hidden" class="formulario__grupo-input"  id="ID_Viajero" name="ID_Viajero" value="<?php echo $id_viajero; ?>"/>
 											<!-- Grupo boton --> 
 													  <div class="formulario__grupo" id="formulario__grupo-btn-enviar">
 										   <label for="Espacio" class="formulario__label"> </label> 
