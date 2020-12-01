@@ -56,22 +56,28 @@
             }
             
 
+    $paypal = 'AASHJDHJHJD612334';
+    $estado = 'pendiente';
+    $consulta= $link -> prepare("INSERT INTO nuevoenvio (ID_Cliente, Estado_Origen, Estado_Destino, Fecha_Envio, Comentario, Precio_final, PaypalDatos, Fecha, Correo, Estado) 
+     VALUES (:ID_Cliente, :Estado_Origen, :Estado_Destino, :Fecha_Envio, :Comentario, '$precioFinal', '$paypal', NOW(), :correo, '$estado')");
+    $consulta ->bindParam(':ID_Cliente',$id);
+    $consulta->bindParam(':Estado_Origen',$estado_origen);
+    $consulta ->bindParam(':Estado_Destino',$estado_destino);
+    $consulta ->bindParam(':Fecha_Envio',$fecha_envio);
+    $consulta -> bindParam(':Comentario',$comentario);
+    $consulta -> bindParam(':correo',$correo);
+   
+    if($consulta->execute()){
+        $IdEnvio= $link->lastInsertId();
+        header("Location: ../usuario/Pago.php");
+    }else
+    
+        ?>
+    <script> alert("Ya tiene un envio registrado") 
+     window.location.href='../usuario/Envios.php'; </script>
+    
+    
     
 
-    $consulta = $link -> prepare("INSERT INTO nuevoenvio ( ID_Cliente,Estado_Origen, Estado_Destino, Fecha_Envio, Comentario, Precio_final)
-    VALUES ( :ID_Cliente,:Estado_Origen, :Estado_Destino, :Fecha_Envio, :Comentario, '$precioFinal')");
-   $consulta ->bindParam(':ID_Cliente',$id);
-   $consulta->bindParam(':Estado_Origen',$estado_origen);
-   $consulta ->bindParam(':Estado_Destino',$estado_destino);
-   $consulta ->bindParam(':Fecha_Envio',$fecha_envio);
-   $consulta -> bindParam(':Comentario',$comentario);
-   
-                
-   if($consulta->execute()){
-       echo "Envio Registrado";
-       header("Location: ../usuario/Pago.php");
-   }else{
-    echo "Error en la creacion del nuevo envio, intente despues";
-   }
-?>
+
    

@@ -71,7 +71,7 @@ require_once('../bd/conexion.php');
 							<!--form para registro del viajero-->
 								<!--Todo separado por grupos para el JQuery-->
 						<div class="form-inner-cont">
-							<form  class="input-field" action="../funciones/funcionesViajero.php" method= "POST" id="formulario">
+							<form  class="input-field" action="../funcionesUsuario/funcionesEnvios.php" method= "POST" id="formulario">
 							  <div class="singup"> 
 								<div class="title-content text-center">
 								<h2><a> ¡Hola! <?php echo $_SESSION['Nombre']?> </a></h2>
@@ -198,7 +198,7 @@ require_once('../bd/conexion.php');
 											?>
 											 <div class="formulario__grupo" id="grupo__id">
 											 <div class="formulario__grupo-input">
-											<input type="hidden"class="formulario__grupo-input"  id="ID_Cliente" name="ID_Cliente" value="<?php echo $id; ?>"/>
+											<input type="hidden" class="formulario__grupo-input"  id="ID_Cliente" name="ID_Cliente" value="<?php echo $id; ?>"/>
 											<!-- Grupo boton --> 
 											<div class="formulario__grupo" id="formulario__grupo-btn-enviar">
 										   <label for="Espacio" class="formulario__label"> </label> 
