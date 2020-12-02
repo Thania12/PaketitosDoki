@@ -1,5 +1,8 @@
-<?php
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+<?php
+    
+    
     include ('../viajero/conexion.php');
 
     $estado_origen = ($_POST['Estado_Origen']);
@@ -68,16 +71,98 @@
     $consulta -> bindParam(':correo',$correo);
    
     if($consulta->execute()){
-        $IdEnvio= $link->lastInsertId();
-        header("Location: ../usuario/Pago.php");
+        $IdEnvio= $link->lastInsertId();?>
+    
+         <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+         <style>
+    
+    /* Media query for mobile viewport */
+    @media screen and (max-width: 400px) {
+        #paypal-button-container {
+            width: 100%;
+        }
+    }
+    
+    /* Media query for desktop viewport */
+    @media screen and (min-width: 400px) {
+        #paypal-button-container {
+            width: 250px;
+            display: inline-block;
+        }
+    }
+    
+</style>      
+     <div class="jumbotron jumbotron-fluid text-center">
+        <div class="container">
+        <h1 class="display-4"> ¡Paso Final! </h1>
+        <hr class="my-4">
+        <p class="lead"> Estas a punto de pagar con @PayPal un total de:
+            <h4> $ <?php echo number_format($precioFinal, 2); ?> </h4>
+            <div id="paypal-button-container"></div>
+        </p>
+        <p> Podrá descargar el comprobante de pago </p> </br>
+        <strong> (Para aclaraciones  :paquetitosdoki@gmail.com)</strong>
+    </p>
+         </div>
+         </div>
+
+         <?php 
+         
+   ?>
+<script>
+    paypal.Button.render({
+        env: 'sandbox', // sandbox | production
+        style: {
+            label: 'checkout',  // checkout | credit | pay | buynow | generic
+            size:  'responsive', // small | medium | large | responsive
+            shape: 'pill',   // pill | rect
+            color: 'blue'   // gold | blue | silver | black
+        },
+ 
+        // PayPal Client IDs - replace with your own
+        // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+ 
+        client: {
+            sandbox:    'ARbQl5iIa_f-RUAQF8Ncj6RCg4czBaKawudng8iX52hmyx2qNz2XNRNa2GR1LU0mCGGplSgCwl3p9aGj',
+            production: 'AWWRVH9GQaRBm24WSlv6qBKPJ8fwgylb523sH20-FVEaVWc8oZsaKaMWmeDzYZbgf3M_enTnLvTRpypB'
+        },
+ 
+        // Wait for the PayPal button to be clicked
+ 
+        payment: function(data, actions) {
+            return actions.payment.create({
+                payment: {
+                    transactions: [
+                        {
+                            amount: { total: '<?php echo $precioFinal;?>', currency: 'MXN' }, 
+                            description:"Pago de envio:$ <?php echo number_format($precioFinal,2);?>",
+                            custom:"<?php echo $id;?>#<?php echo $IdEnvio ; ?>"
+                        }
+                    ]
+                }
+            });
+        },
+ 
+        // Wait for the payment to be authorized by the customer
+ 
+        onAuthorize: function(data, actions) {
+            return actions.payment.execute().then(function() {
+                console.log(data);
+                window.location="verificador.php?paymentToken="+data.paymentToken+"&paymentID="+data.paymentID;
+            });
+        }
+    
+    }, '#paypal-button-container');
+ 
+</script>
+       <?php
     }else
     
         ?>
-    <script> alert("Ya tiene un envio registrado") 
-     window.location.href='../usuario/Envios.php'; </script>
+    <!--<script> alert("Ya tiene un envio registrado") 
+     window.location.href='../usuario/Envios.php'; </script>-->
     
-    
-    
+      
 
 
    
