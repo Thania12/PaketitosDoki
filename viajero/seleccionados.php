@@ -1,4 +1,5 @@
 <?php 
+include '../bd/conexion.php';
 session_start();
 $mensaje="";
 if(isset($_POST['btnAccion'])){
@@ -61,6 +62,10 @@ break;
     
     
     break;
+   
+        
+
+
     }
 }
 ?>

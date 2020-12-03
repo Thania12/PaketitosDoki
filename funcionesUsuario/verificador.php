@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <?php  
     include ('../viajero/conexion.php');
 //print_r($_GET);
@@ -33,7 +35,7 @@ $claveVenta=$clave[1];
  curl_close($Login);
 
  if($state=="approved"){
-     $mensajePaypal="<h3> SU PAGO HA SIDO APROVADO </h3>";
+     $mensajePaypal="<h3> ¡SE HA EFECTUADO SU PAGO! </h3>";
      $sentencia = $link->prepare("UPDATE `nuevoenvio` 
      SET `PaypalDatos` =  :PaypalDatos, 
      `Estado` = 'aprobado' 
@@ -41,22 +43,36 @@ $claveVenta=$clave[1];
      $sentencia->bindParam(":ID_NEnvio" ,$claveVenta);
      $sentencia->bindParam(":PaypalDatos" ,$respuestaVenta);
      $sentencia->execute();
-
-     //pasar a pago completo
-     $sentencia = $link->prepare("UPDATE `nuevoenvio` 
-     SET   `Estado` = 'completo' 
-     WHERE `PaypalDatos` = :PaypalDatos
-     AND `Precio_final` = :TOTAL
-     AND `ID_NEnvio` = :ID_NEnvio");
-     $sentencia->bindParam(':ClaveTransaccion' ,$claveVenta);
-     $sentencia->bindParam(':TOTAL' ,$total);
-     $sentencia->bindParam(':ID_NEnvio' ,$claveVenta);
-     $sentencia->execute();
-
+    $completado=$sentencia->rowCount();
 
  }else{
     $mensajePaypal="<h3> OCURRIO UN ERROR CON SU PAGO EN PayPal. </h3>";
- }
-
-echo $mensajePaypal;
+ } 
+    
 ?> 
+
+<div class="jumbotron jumbotron-fluid text-center">
+ <h1 class="display-4"> ¡Listo! </h1>
+ <hr class="my-4">
+ <p class="led"> <?php echo $mensajePaypal; ?></p>
+ <p>
+ <?php  
+   if($completado>=1){
+    $sentencia = $link->prepare("SELECT * FROM nuevoenvio 
+    WHERE ID_NEnvio = '$claveVenta' 
+    AND ID_Cliente = '$idEnvio'");
+    $sentencia->bindParam(":ID_NEnvio",$claveVenta);
+    $sentencia->bindParam(":ID_Cliente", $idEnvio);
+    $sentencia->execute();
+
+    $detalleEnvio = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    
+       
+   }
+    
+ ?>
+
+
+ </p>
+ <a class="nav-link" href="../usuario/Envios.php"> Ver mi envio </a>
+</div>

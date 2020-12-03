@@ -52,7 +52,6 @@ require_once('../bd/conexion.php');
 						<ul class="navbar-nav ml-auto">		
 							<li class="nav-item">
 								<ul>
-									<li><a class="nav-link" href="enviosSolicitados.php">Solicitudes</a></li>
 									<li><a class="nav-link" href="misenvios.php">Mis Envios</a></li>
 									<li><a class="nav-link" href="salir.php">Cerrar sesión </a></li>
 								</ul>
@@ -271,12 +270,12 @@ require_once('../bd/conexion.php');
 	<!-- footer-66 -->
 	<footer class="w3l-footer-66">
 		<section class="footer-inner-main">
-			<div class="footer-hny-grids py-5">
-				<div class="container py-lg-4">
+			<div class="footer-hny-grids py-1">
+				<div class="container py-lg-3">
 					<div class="text-txt">
 						<div class="right-side">
 							<div class="row sub-columns">
-								<div class="col-lg-4 col-md-6 sub-one-left pr-lg-4">
+								<div class="col-lg-4 col-md-4 sub-one-left pr-lg-4">
 									<h2><a class="navbar-brand" href="../index.php">Paquetitos<span> Doki </span></a></h2>
 									<!-- if logo is image enable this   
 									<a class="navbar-brand" href="#index.php">
@@ -296,24 +295,7 @@ require_once('../bd/conexion.php');
 										</ul>
 									</div>
 								</div>
-								<div class="col-lg-4 col-md-6 sub-one-left mid-footer-gd">
-									<div class="sub-two-right">
-										<h6>  Menú  </h6>
-										<ul>
-											<li><a href="envios.php"><span
-														class="fa fa-angle-right mr-2"></span>Hacer Envio </a>
-											</li>
-											<li><a href="viajesSolicitados.php"><span
-														class="fa fa-angle-right mr-2"></span>Solicitar Envio  </a>
-											</li>
-											<li><a href="misenvios.php"><span
-														class="fa fa-angle-right mr-2"></span>Mis Envios </a></li>
-											
-										</ul>
-									</div>
-			
-								</div>
-								
+														
 									</form>
 								</div>
 							</div>

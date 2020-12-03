@@ -83,7 +83,7 @@
         <?php } ?>
         <div class="row" >
             <?php
-            $sentencia = $link->prepare("SELECT * FROM `nuevoenvio` ");
+            $sentencia = $link->prepare("SELECT * FROM `nuevoenvio`WHERE Estado = 'aprobado' OR Estado='camino' OR Estado = 'entregado'");
             $sentencia->execute();
             $listaViajes =$sentencia->fetchAll(PDO::FETCH_ASSOC);
            // print_r($listaViajes);
@@ -132,16 +132,17 @@
     
     });
 </script>
-
-<footer class="w3l-footer-66">
+    <!-- footer-66 -->
+    <!-- footer-66 -->
+	<footer class="w3l-footer-66">
 		<section class="footer-inner-main">
-			<div class="footer-hny-grids py-5">
-				<div class="container py-lg-4">
+			<div class="footer-hny-grids py-1">
+				<div class="container py-lg-3">
 					<div class="text-txt">
 						<div class="right-side">
 							<div class="row sub-columns">
-								<div class="col-lg-4 col-md-6 sub-one-left pr-lg-4">
-									<h2><a class="navbar-brand" href="index.php">Paquetitos<span> Doki </span></a></h2>
+								<div class="col-lg-4 col-md-4 sub-one-left pr-lg-4">
+									<h2><a class="navbar-brand" href="../index.php">Paquetitos<span> Doki </span></a></h2>
 									<!-- if logo is image enable this   
 									<a class="navbar-brand" href="#index.php">
 										<img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
@@ -160,24 +161,7 @@
 										</ul>
 									</div>
 								</div>
-								<div class="col-lg-4 col-md-6 sub-one-left mid-footer-gd">
-									<div class="sub-two-right">
-										<h6>  Menú  </h6>
-										<ul>
-											<li><a href="viajes.php"><span
-														class="fa fa-angle-right mr-2"></span>Viajes </a>
-											</li>
-											<li><a href="viajesSolicitados.php"><span
-														class="fa fa-angle-right mr-2"></span>Viajes solicitados  </a>
-											</li>
-											<li><a href="misviajes.php"><span
-														class="fa fa-angle-right mr-2"></span>Mis viajes </a></li>
-											
-										</ul>
-									</div>
-			
-								</div>
-								
+														
 									</form>
 								</div>
 							</div>
@@ -195,7 +179,7 @@
 						<ul class="columns text-lg-right">
 							<li><a href="#"> Politica de Privacidad </a>
 							</li>
-							<li><a href="about.php"> Acerca de nosotros </a>
+							<li><a href="../about.php"> Acerca de nosotros </a>
 							</li>
 						</ul>
 					</div>
@@ -235,6 +219,17 @@
 </body>
 
 </html>
-<script src="../assets/js/jquery-3.3.1.min.js"></script>
-</body>
-</html>
+
+<!-- disable body scroll which navbar is in active -->
+
+<!--//-->
+<script>
+$(function () {
+	$('.navbar-toggler').click(function () {
+		$('body').toggleClass('noscroll');
+	})
+});
+</script>
+<!--/scroll-down-JS-->
+<!--//pop-up-box-->
+<script src="../assets/js/bootstrap.min.js"></script>

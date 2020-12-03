@@ -425,7 +425,7 @@
 	<!-- footer-66 -->
 	<footer class="w3l-footer-66">
 		<section class="footer-inner-main">
-			<div class="footer-hny-grids py-5">
+			<div class="footer-hny-grids py-3">
 				<div class="container py-lg-4">
 					<div class="text-txt">
 						<div class="right-side">
@@ -450,25 +450,6 @@
 											</ul>
 										</div>
 									</div>
-									<div class="col-lg-4 col-md-6 sub-one-left mid-footer-gd">
-										<div class="sub-two-right">
-											<h6>  Menú  </h6>
-											<ul>
-												<li><a href="index.php"><span
-															class="fa fa-angle-right mr-2"></span> Inicio </a>
-												</li>
-												<li><a href="about.php"><span
-															class="fa fa-angle-right mr-2"></span> Acerca de nosotros </a>
-												</li>
-												<li><a href="services.php"><span
-															class="fa fa-angle-right mr-2"></span>Servicios </a></li>
-												<li><a href="contact.php"><span
-															class="fa fa-angle-right mr-2"></span>Contacto </a></li>
-											</ul>
-										</div>
-				
-									</div>
-									
 										</form>
 									</div>
 								</div>

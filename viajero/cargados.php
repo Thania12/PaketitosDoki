@@ -126,7 +126,7 @@
 	</br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> 
         <footer class="w3l-footer-66">
 		<section class="footer-inner-main">
-			<div class="footer-hny-grids py-4">
+			<div class="footer-hny-grids py-3">
 				<div class="container py-lg-3">
 					<div class="text-txt">
 						<div class="right-side">
@@ -151,24 +151,7 @@
 										</ul>
 									</div>
 								</div>
-								<div class="col-lg-4 col-md-6 sub-one-left mid-footer-gd">
-									<div class="sub-two-right">
-										<h6>  Menú  </h6>
-										<ul>
-											<li><a href="viajes.php"><span
-														class="fa fa-angle-right mr-2"></span>Viajes </a>
-											</li>
-											<li><a href="viajesSolicitados.php"><span
-														class="fa fa-angle-right mr-2"></span>Viajes solicitados  </a>
-											</li>
-											<li><a href="misviajes.php"><span
-														class="fa fa-angle-right mr-2"></span>Mis viajes </a></li>
-											
-										</ul>
-									</div>
-			
-								</div>
-								
+													
 									</form>
 								</div>
 							</div>

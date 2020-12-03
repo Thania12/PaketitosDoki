@@ -20,7 +20,12 @@ require_once('../bd/conexion.php');
     <link href="//fonts.googleapis.com/css?family=Noto+Sans+JP:100,300,400,500,700&display=swap" rel="stylesheet">
     <!-- Template CSS -->
 </head>
-
+<script>
+        (function(w,d,u){
+                var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
+                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        })(window,document,'https://cdn.bitrix24.es/b16024689/crm/site_button/loader_1_0ci0vx.js');
+</script>
 <body>
 
     <!---header-->
@@ -28,7 +33,7 @@ require_once('../bd/conexion.php');
         <!--/nav-->
         <nav class="navbar navbar-expand-lg navbar-light px-lg-0 py-0 px-3 stroke">
             <div class="container">
-                <h1><a class="navbar-brand" href="../index.php"> Paquetitos Doki <span>
+                <h1><a class="navbar-brand" stylr="color:  #5e9ad6" href="Envios.php"> Mis Envios <span>
                         </span></a></h1>
                 <!-- if logo is image enable this   
 						<a class="navbar-brand" href="#index.php">
@@ -45,10 +50,9 @@ require_once('../bd/conexion.php');
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <ul>
-                                <li><a class="nav-link" href="enviosSolicitados.php">Envios Solicitados</a></li>
-                                <li><a class="nav-link" href="Envios.php">Envios</a></li>
+                                <li><a class="nav-link" href="Envios.php"> Nuevo Envio </a></li>
                                 <li><a class="nav-link"
-                                        href="klorofil-free-dashboard-template-v2.0/template/page-login.html">Salir</a>
+                                        href="salir.php"> Cerrar Sesión </a>
                                 </li>
                             </ul>
                         </li>
@@ -56,260 +60,164 @@ require_once('../bd/conexion.php');
         </nav>
         <!--//nav-->
     </header>
+    <div class="title-content text-left">
+        <br> <br>
+									
+	</div>
+		<nav id="breadcrumbs" class="breadcrumbs">
+			<div class="container page-wrapper">
+				<a href="../index.php"> Inicio </a> » <span class="breadcrumb_last" aria-current="page">Contacto </span>
+			</div>
+		</nav>
+		<br>
 
-    <section class="w3l-specification-6">
-
-        <div class="specification-6-mian py-5">
-
-            <div class="container py-lg-4">
-
-                <div class="row story-4-grids text-left">
-
-                    <div class="col-lg-12 story-gd pl-lg-4">
-                        <!--form para registro del viajero-->
-                        <!--Todo separado por grupos para el JQuery-->
-                        <div class="form-inner-cont">
-                            <form class="input-field" id="formulario">
-                                <div class="singup">
-                                    <div class="title-content text-center">
-                                        <div class="row bg-white " style="height: 450px;">
-                                            <div class="col-md-10 d-flex align-items-center"
-                                                style="justify-content: center; padding-left: 10%;">
-
-                                                <table class="table" style="border-color: black; border-style: solid;">
-                                                    <th
-                                                        style="background-color: blue; color: white; border-style: solid; border-color: black;">
-                                                        ID</th>
-                                                    <th
-                                                        style="background-color: blue; color: white; border-style: solid; border-color: black;">
-                                                        Destino</th>
-                                                    <th
-                                                        style="background-color: blue; color: white; border-style: solid; border-color: black;">
-                                                        Fecha de Envio</th>
-                                                    <th
-                                                        style="background-color: blue; color: white; border-style: solid; border-color: black;">
-                                                        Estatus</th>
-
-                                                    <?php
-			$conexion=mysqli_connect("localhost","root","","dokibase") or
+             <?php
+			$conexion=mysqli_connect("localhost","root","","dokibase3") or
 			die("Problemas con la conexión");
             $id_cliente = isset($_SESSION['ID_Cliente']) ? $_SESSION['ID_Cliente'] : '';
 			//Aqui se le tiene que agregar el ID del usuario logueado en un where
-			$registros=mysqli_query($conexion,"SELECT * from mis_envios  WHERE ID_Cliente = $id_cliente") or 
+			$registros=mysqli_query($conexion,"SELECT * from nuevoenvio  WHERE ID_Cliente = $id_cliente AND Estado ='aprobado' OR Estado='camino' OR Estado='entregado'") or 
 			die("Problemas en el select:".mysqli_error($conexion));
 
 			
 			while ($reg=mysqli_fetch_array($registros))
 			{
-			echo '<tr>
-			 <td style="border-style: solid; border-color: black;">'.$reg['id'].'</td>
-			 <td style="border-style: solid; border-color: black;">'.$reg['destino'].'</td>
-			 <td style="border-style: solid; border-color: black;">'.$reg['fecha_envio'].'</td>
-			 <td style="border-style: solid; border-color: black;">'.$reg['estatus'].'</td>
-			 </tr>';
-			}
-			echo '
-			
-			 </table>
-				</div>
-				<div class="col-md-10" style="justify-content: center; padding-left: 10%;">
-					<button style="width: 300px; background-color: rgb(61, 81, 134); color: white;" class="font-weight-bold">Ver datos de viajero</button>
-					<button style="width: 300px; background-color: rgb(61, 81, 134); color: white;" class="font-weight-bold">Calificar viajero</button>
-				</div>
-
-
-        	<div class="col-md-5 d-flex align-items-center" style="justify-content: center; padding-left: 10%;">
-
-            <table class="table" style="border-color: black; border-style: solid;">
-                <th style="background-color: blue; color: white; border-style: solid; border-color: black;">Nombre</th>
-                <th style="background-color: blue; color: white; border-style: solid; border-color: black;">Celular</th>
-			';
-			$registros=mysqli_query($conexion,"SELECT * from viajero where ID_Viajero = 1") or 
-			die("Problemas en el select:".mysqli_error($conexion));
-			while($reg=mysqli_fetch_array($registros)){
-
-            echo '<tr>
-                <td style="border-style: solid; border-color: black;">'.$reg['Nombre'].'</td>
-                <td style="border-style: solid; border-color: black;">'.$reg['Telefono'].'</td>
-                </tr>';
-			}
-			echo '
+                if($reg['Estado']=='entregado'){
+                    echo '<h6 style="text-center"> El paquete esta entregado en la sucursal de su Estado Destino,  Consulte: <a href="sucursales.php"> Dirección de sucursales </a> </h6>';
+                 } else{
+                    echo '<h6 style="text-center"> Cuando el estado de su paquete este Entregado, Consulte: <a href="sucursales.php"> Dirección de sucursales </a> </h6>';
+                 }
+            echo '
+            <table class="table table-light table-bordered" style="center">  
+            <tbody>
+            <tr>
+            <th width="10%" class="text-center" style="color:red"> Clave de Envio </th>
+            <th width="10%" class="text-center"> Origen </th>
+            <th width="10%" class="text-center"> Destino </th>
+            <th width="10%" class="text-center"> Fecha </th>
+            <th width="10%" class="text-center"> Precio </th>
+            <th width="15%" class="text-center"> Estado de mi Envio </th>
+            </tr>
+            <tr>
+            <td width="10%" class="text-center">'.$reg['ID_NEnvio'].'</td>
+            <td width="10%" class="text-center">'.$reg['Estado_Origen'].'</td>
+            <td width="10%" class="text-center">'.$reg['Estado_Destino'].'</td>
+            <td width="10%" class="text-center">'.$reg['Fecha_Envio'].'</td>
+			<td width="10%" class="text-center">'.$reg['Precio_final'].'</td>
+            <td width="15%" class="text-center" style="color:red">'.$reg['Estado'].'</td>>
+            </tr>
+            
+            </tbody>
             </table>
             </div>';
-			 
-			 
-			 
-		
-
+			}
+		     
 			mysqli_close($conexion);
-			?>
+            ?>
+          
 
-
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-
-
-                        <style>
-                        input[type=button] {
-                            background-color: #3d73de;
-                            color: white;
-                            padding: 5px 10px;
-                            border: none;
-                            border-radius: 10px;
-                            cursor: pointer;
-                            float: right;
-                            background: #;
-                            text-align: center;
-
-                        }
-
-                        input[type=submit]:hover {
-                            background-color: #5e9ad6;
-                        }
-
-                        input[type=submit] {
-                            background-color: #5e9ad6;
-                            color: white;
-                            padding: 5px 10px;
-                            border: none;
-                            border-radius: 10px;
-                            cursor: pointer;
-                            float: right;
-                            text-align: center;
-                        }
-
-                        .warnings {
-                            width: 200px;
-                            text-align: center;
-                            margin: auto;
-                            color: #B06AB3;
-                            padding-top: 20px;
-                        }
-                        </style>
-
-    </section>
+</br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> 
 
     <!-- //contact-form -->
 
     <!-- footer-66 -->
-    <footer class="w3l-footer-66">
-        <section class="footer-inner-main">
-            <div class="footer-hny-grids py-5">
-                <div class="container py-lg-4">
-                    <div class="text-txt">
-                        <div class="right-side">
-                            <div class="row sub-columns">
-                                <div class="col-lg-4 col-md-6 sub-one-left pr-lg-4">
-                                    <h2><a class="navbar-brand" href="index.php">Paquetitos<span> Doki </span></a></h2>
-                                    <!-- if logo is image enable this   
+    <!-- footer-66 -->
+	<footer class="w3l-footer-66">
+		<section class="footer-inner-main">
+			<div class="footer-hny-grids py-1">
+				<div class="container py-lg-3">
+					<div class="text-txt">
+						<div class="right-side">
+							<div class="row sub-columns">
+								<div class="col-lg-4 col-md-4 sub-one-left pr-lg-4">
+									<h2><a class="navbar-brand" href="../index.php">Paquetitos<span> Doki </span></a></h2>
+									<!-- if logo is image enable this   
 									<a class="navbar-brand" href="#index.php">
 										<img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
 									</a> -->
-                                    <p class="pr-lg-4"> Contactanos para más información en nuestras redes sociales </p>
-                                    <div class="columns-2">
-                                        <ul class="social">
-                                            <li><a href="#facebook"><span class="fa fa-facebook"
-                                                        aria-hidden="true"></span></a>
-                                            </li>
+									<p class="pr-lg-4"> Contactanos para más información en nuestras redes sociales </p>
+									<div class="columns-2">
+										<ul class="social">
+											<li><a href="#facebook"><span class="fa fa-facebook"
+														aria-hidden="true"></span></a>
+											</li>
+										
+											<li><a href="#twitter"><span class="fa fa-twitter"
+														aria-hidden="true"></span></a>
+											</li>
+										
+										</ul>
+									</div>
+								</div>
+														
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="below-section">
+				<div class="container">
+					<div class="copyright-footer">
+						<div class="columns text-lg-left">
+							<p>© 2020 Paquetitos Doki. Todos los derechos reservados  <a
+									href="https://w3layouts.com"> Bienvenido </a></p>
+						</div>
+						<ul class="columns text-lg-right">
+							<li><a href="#"> Politica de Privacidad </a>
+							</li>
+							<li><a href="../about.php"> Acerca de nosotros </a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		<!-- copyright -->
+		<!-- move top -->
+		<button onclick="topFunction()" id="movetop" title="Go to top">
+			<span class="fa fa-arrow-up" aria-hidden="true"></span>
+		</button>
+		<script>
+			// When the user scrolls down 20px from the top of the document, show the button
+			window.onscroll = function () {
+				scrollFunction()
+			};
 
-                                            <li><a href="#twitter"><span class="fa fa-twitter"
-                                                        aria-hidden="true"></span></a>
-                                            </li>
+			function scrollFunction() {
+				if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+					document.getElementById("movetop").style.display = "block";
+				} else {
+					document.getElementById("movetop").style.display = "none";
+				}
+			}
 
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 sub-one-left mid-footer-gd">
-                                    <div class="sub-two-right">
-                                        <h6> Menú </h6>
-                                        <ul>
-                                            <li><a href="viajes.php"><span class="fa fa-angle-right mr-2"></span>Envios
-                                                </a>
-                                            </li>
-                                            <li><a href="viajesSolicitados.php"><span
-                                                        class="fa fa-angle-right mr-2"></span>Envios solicitados </a>
-                                            </li>
-                                            <li><a href="misviajes.php"><span class="fa fa-angle-right mr-2"></span>Mis
-                                                    Envios </a></li>
+			// When the user clicks on the button, scroll to the top of the document
+			function topFunction() {
+				document.body.scrollTop = 0;
+				document.documentElement.scrollTop = 0;
+			}
+		</script>
+		<!-- /move top -->
 
-                                        </ul>
-                                    </div>
+	</section>
+</footer>
+<!--//footer-66 -->
 
-                                </div>
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div class="below-section">
-                <div class="container">
-                    <div class="copyright-footer">
-                        <div class="columns text-lg-left">
-                            <p>© 2020 Paquetitos Doki. Todos los derechos reservados <a href="https://w3layouts.com">
-                                    Bienvenido </a></p>
-                        </div>
-                        <ul class="columns text-lg-right">
-                            <li><a href="#"> Politica de Privacidad </a>
-                            </li>
-                            <li><a href="about.php"> Acerca de nosotros </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- copyright -->
-            <!-- move top -->
-            <button onclick="topFunction()" id="movetop" title="Go to top">
-                <span class="fa fa-arrow-up" aria-hidden="true"></span>
-            </button>
-            <script>
-            // When the user scrolls down 20px from the top of the document, show the button
-            window.onscroll = function() {
-                scrollFunction()
-            };
-
-            function scrollFunction() {
-                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    document.getElementById("movetop").style.display = "block";
-                } else {
-                    document.getElementById("movetop").style.display = "none";
-                }
-            }
-
-            // When the user clicks on the button, scroll to the top of the document
-            function topFunction() {
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-            }
-            </script>
-            <!-- /move top -->
-
-        </section>
-    </footer>
-    <!--//footer-66 -->
-   
 </body>
 
 </html>
-<script src="assets/js/jquery-3.3.1.min.js"></script>
+
 <!-- disable body scroll which navbar is in active -->
 
 <!--//-->
 <script>
-$(function() {
-    $('.navbar-toggler').click(function() {
-        $('body').toggleClass('noscroll');
-    })
+$(function () {
+	$('.navbar-toggler').click(function () {
+		$('body').toggleClass('noscroll');
+	})
 });
 </script>
 <!--/scroll-down-JS-->
 <!--//pop-up-box-->
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
