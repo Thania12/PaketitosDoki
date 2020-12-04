@@ -88,7 +88,7 @@
 					<th width="15%" class="text-center"> Fecha </th>
 					<th width="25%" class="text-center"> Comentario </th>
 					<th width="20%"class="text-center"> Precio </th>
-					<th width="10%" class="text-center"> ---- </th>
+					
 				</tr>
 				<!-- video 13 -->
 				<?php foreach($_SESSION['seleccionado'] as $indice=>$agregado){?>
@@ -98,18 +98,34 @@
 					<td width="15%" class="text-center"> <?php echo $agregado['fecha']?> </td>
 					<td width="25%" class="text-center"> <?php echo $agregado['comentario']?> </td>
 					<td width="20%" class="text-center"> <?php echo $agregado['precio']?> </td>
-					<td width="10%" >
+					<th width="20%" >
 						<!-- video 14 TODO ESTO SE PROCESA CON EL CASE
 						DE SELECCIONAR CON EL VALUE DEL BUTTON-->
 					<form action="" method="POST">
 						<!-- aqui se especifica cual es el ID que se debe eliminar-->
 						<input type="hidden" name="id" value ="<?php echo $agregado['id']; ?>">
+						<div class="btn-group-vertical">
 						<button 
-						class="btn-danger" 
+						class=" btn btn-danger" 
 						type="submit"
 						name="btnAccion"
 						value="Eliminar"
-						> Eliminar </button> </td>
+						> Eliminar </button>
+						<button 
+						class="btn btn-warning" 
+						type="submit"
+						name="btnAccion"
+						value="camino"
+						> Camino </button>
+						</br> </br>
+						<button 
+						class="btn btn-success" 
+						type="submit"
+						name="btnAccion"
+						value="Entregado"
+						> Entregado </button>
+						</div>
+						 </th>
 				</tr>
 				<?php } ?>
 				

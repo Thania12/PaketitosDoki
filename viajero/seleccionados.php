@@ -1,5 +1,5 @@
 <?php 
-include '../bd/conexion.php';
+include 'conexion.php';
 session_start();
 $mensaje="";
 if(isset($_POST['btnAccion'])){
@@ -62,10 +62,19 @@ break;
     
     
     break;
-   
-        
-
-
+    case "camino":
+        $id= ($_POST['id']);
+        $sentencia = $link->prepare("UPDATE `nuevoenvio` 
+     SET `Estado` = 'camino' 
+     WHERE `nuevoenvio`.`ID_NEnvio` = '$id'");
+     $sentencia->bindParam(":ID_NEnvio" ,$id);
+     $sentencia->execute();
+    $completado=$sentencia->rowCount();
+    break;
     }
+}
+
+function ocultarEliminar(){
+  
 }
 ?>
