@@ -83,7 +83,7 @@ require_once('../bd/conexion.php');
 											<div class="formulario__grupo" id="grupo__Nombre">
 											<label for="Nombre" class="formulario__label"> Seleccionar Destino</label>
 											<div class="">
-											<select name="Estado_Destino" id="Estado_Destino" class="form-control" style="height: 60px; font-size:14px; line-height: 1.5">
+											<select name="Estado_Destino" id="Estado_Destino" class="form-control" style="height: 60px; font-size:14px; line-height: 1.5" require>
 											<option value ="Aguascalientes"> Aguascalientes </option>
 											<option value ="Baja California"> Baja California </option>
 											<option value ="Baja California Sur "> Baja California Sur </option>
@@ -124,7 +124,7 @@ require_once('../bd/conexion.php');
                                             <div class="formulario__grupo" id="grupo__Nombre">
 											<label for="Nombre" class="formulario__label"> Seleccionar Origen</label>
 											<div class="">
-											<select name="Estado_Origen" id="Estado_Origen" class="form-control" style="height: 60px; font-size:14px; line-height: 1.5">
+											<select name="Estado_Origen" id="Estado_Origen" class="form-control" style="height: 60px; font-size:14px; line-height: 1.5" require>
 											<option value ="Aguascalientes"> Aguascalientes </option>
 											<option value ="Baja California"> Baja California </option>
 											<option value ="Baja California Sur "> Baja California Sur </option>
@@ -168,7 +168,7 @@ require_once('../bd/conexion.php');
 											 <div class="formulario__grupo" id="grupo__Edad">
 											 <label for="Nombre" class="formulario__label"> Fecha  </label>
 											 <div class="formulario__grupo-input">
-											<input type="date" class="formulario__grupo-input"  id="Fecha_Viaje" name="Fecha_Viaje">
+											<input type="date" class="formulario__grupo-input"  id="Fecha_Viaje" name="Fecha_Viaje" require>
 											<i class="formulario__validacion-estado fas fa-times-circle"></i>
 											</div>
 											</div>

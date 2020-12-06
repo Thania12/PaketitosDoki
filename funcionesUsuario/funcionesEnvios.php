@@ -11,41 +11,74 @@
     $comentario = ($_POST['Comentario']);
     $id = ($_POST['ID_Cliente']);
     $correo = ($_POST['correo']);
+    $norte  = array('Baja California', 'Baja California Sur', 'Sonora','Chihuahua', 'Sinaloa','Coahuila', 'Durango', 'Nuevo Leon' );
+$centro  = array('Zacatecas','Nayarit','Aguascalientes','San Luis Potosi','Guanajuato','Jalisco', 'Colima','Queretaro', 'Hidalgo', 'Tlaxcala', 'CDMX', 'Michoacan', 'Morelos');
+$sur  = array('Guerrero','Puebla','Veracruz','Oaxaca','Tabasco','Chiapas', 'Quintana Roo', 'Campeche','Yucatan');
+
+    
+    foreach($centro as $centro1){
+        $lev = levenshtein($estado_origen, $centro1);
+        if($lev == 0){
+            $origen=2;
+        }
+    }
+    foreach($norte as $norte1){
+        $lev = levenshtein($estado_origen, $norte1);
+        if($lev == 0){
+            $origen=3;
+        }
+    }
+    foreach($sur as $sur1){
+        $lev = levenshtein($estado_origen, $sur1);
+        if($lev == 0){
+            $origen=1;
+        }
+    }
+
+
+    foreach($centro as $centro1){
+        $lev = levenshtein($estado_destino, $centro1);
+        if($lev == 0){
+            $destino=2;
+        }
+    }
+    foreach($norte as $norte1){
+        $lev = levenshtein($estado_destino, $norte1);
+        if($lev == 0){
+            $destino=3;
+        }
+    }
+    foreach($sur as $sur1){
+        $lev = levenshtein($estado_destino, $sur1);
+        if($lev == 0){
+            $destino=1;
+        }
+    }
     $ZCT = 1;
     $ZST = 0;
     $ZNT = 2;
-    if($estado_origen== 'Baja California' || 'Baja California Sur' || 'Sonora' || 'Chihuahua' || 'Coahuila' || 'Nuevo Leon' ||
-    'Tamaulipas' || 'Sinaloa' || 'Durango' || 'Zacatecas' || 'San Luis Potosi'){
-            $origen = 3;
-            } elseif($estado_origen == 'Jalisco' || 'Colima' || 'Nayarit' || 'Aguascalientes' || 'Guanajuato' || 'Queretaro' || 'Estado De Mexico' || 'CDMX' || 'Veracruz' || 'Tlaxcala' || 'Puebla') 
-            {
-             $origen= 2;
-            } else{
-                $origen = 1;
-            }
-            if($estado_destino== 'Baja California' || 'Baja California Sur' || 'Sonora' || 'Chihuahua' || 'Coahuila' || 'Nuevo Leon' ||
-            'Tamaulipas' || 'Sinaloa' || 'Durango' || 'Zacatecas' || 'San Luis Potosi'){
-                    $destino= 3;
-                    } elseif($estado_destino == 'Jalisco' || 'Colima' || 'Nayarit' || 'Aguascalientes' || 'Guanajuato' || 'Queretaro' || 'Estado De Mexico' || 'CDMX' || 'Veracruz' || 'Tlaxcala' || 'Puebla') 
-                    {
-                     $destino = 2;  
-                    } else{
-                        $destino= 1;
-                    }
 
-           if($origen == 1){
-               $ZT = $ZNT; 
+    $ZCTO = 1;
+    $ZSTO = 0;
+    $ZNTO = 2;
+
+
+            if($origen == 1){
+               $ZT = $ZNTO; 
                } elseif ($origen == 2){
-                $ZT = $ZCT;
-            }else{
-                $ZT = $ZST;
+                $ZT = $ZCTO;
             }
+            if($origen == 3){
+                $ZT = $ZSTO;
+            }
+
 
             if($destino == 1){
                 $ZT2 =  $ZNT; 
             } elseif($destino == 2){
                 $ZT2 = $ZCT;
-            } else{
+            } 
+            if($destino == 3){
                 $ZT2 = $ZST; 
             }
 
@@ -57,7 +90,10 @@
             } else{
                 $precioFinal = 250;
             }
-            
+            echo $destino;
+            echo $origen;
+
+
 
     $paypal = 'AASHJDHJHJD612334';
     $estado = 'pendiente';
@@ -73,6 +109,7 @@
     if($consulta->execute()){
         $IdEnvio= $link->lastInsertId();?>
     
+
          <script src="https://www.paypalobjects.com/api/checkout.js"></script>
          <style>
     

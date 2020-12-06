@@ -83,7 +83,7 @@
         <?php } ?>
         <div class="row" >
             <?php
-            $sentencia = $link->prepare("SELECT * FROM `nuevoenvio`WHERE Estado = 'aprobado' OR Estado='camino'");
+            $sentencia = $link->prepare("SELECT * FROM `nuevoenvio`WHERE Estado = 'aprobado'");
             $sentencia->execute();
             $listaViajes =$sentencia->fetchAll(PDO::FETCH_ASSOC);
             
