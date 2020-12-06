@@ -248,7 +248,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row quote-grids mt-lg-4 mt-5">
+			<div class="row quote-grids mt-lg-4 mt-5" name="Cotiza" id="Cotiza">
 				<div class="col-lg-7 quote-info">
 					<div class="title-content text-left">
 						<h1 class="hny-title" style="color: #6c99cd; border: 3px;">Cotiza tu envio Hoy.</h1>
@@ -465,7 +465,7 @@
 										href="https://w3layouts.com"> Bienvenido </a></p>
 							</div>
 							<ul class="columns text-lg-right">
-								<li><a href="#"> Politica de Privacidad </a>
+								<li><a href="aviso.php"> Aviso Privacidad </a>
 								</li>
 								<li><a href="about.php"> Acerca de nosotros </a>
 								</li>

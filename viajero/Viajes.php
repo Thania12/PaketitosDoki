@@ -296,7 +296,7 @@ require_once('../bd/conexion.php');
 									href="https://w3layouts.com"> Bienvenido </a></p>
 						</div>
 						<ul class="columns text-lg-right">
-							<li><a href="#"> Politica de Privacidad </a>
+							<li><a href="../aviso.php"> Aviso de Privacidad </a>
 							</li>
 							<li><a href="../about.php"> Acerca de nosotros </a>
 							</li>

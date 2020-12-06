@@ -114,6 +114,8 @@ require_once('../bd/conexion.php');
 								<div class="title-content text-center">
 									<h6 class="sub-title">Crea tu cuenta de Usuario </h6>
 									<h3 class="hny-title"> Realiza tus envios </h3>
+	</br> </br>
+									 <h3> <a href="../index.php#Cotiza"> Realiza tu cotización primero </a> </h3>
 								</div>
 								<div class="d-grid align-form-map mt-lg-5 mt-4">
 										<!-- Grupo Nombre con validacion --> 
@@ -215,7 +217,7 @@ require_once('../bd/conexion.php');
 										   <label for="Espacio" class="formulario__label"> </label> 
 										   <input type="submit" id="register"  name="register" value="Registrar" /> 
 										   </div>
-									
+										   <p> Aviso de privacidad <a href="../aviso.php"> Consultar </a> </p>
 										   <p>       ¿Ya tienes un cuenta?<a href="loginU.php"> Iniciar Sesión</a></p>
 											<p class="warnings" id="warnings"></p>   
 											</div>						
@@ -325,7 +327,7 @@ require_once('../bd/conexion.php');
 									href="https://w3layouts.com"> Bienvenido </a></p>
 						</div>
 						<ul class="columns text-lg-right">
-							<li><a href="#"> Politica de Privacidad </a>
+							<li><a href="../aviso.php"> Aviso de Privacidad </a>
 							</li>
 							<li><a href="../about.php"> Acerca de nosotros </a>
 							</li>

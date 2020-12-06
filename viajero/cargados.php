@@ -122,8 +122,9 @@
 						class="btn btn-success" 
 						type="submit"
 						name="btnAccion"
-						value="Entregado"
+						value="entregado"
 						> Entregado </button>
+					
 						</div>
 						 </th>
 				</tr>
@@ -183,9 +184,9 @@
 									href="https://w3layouts.com"> Bienvenido </a></p>
 						</div>
 						<ul class="columns text-lg-right">
-							<li><a href="#"> Politica de Privacidad </a>
+							<li><a href="../aviso.php"> Aviso de Privacidad </a>
 							</li>
-							<li><a href="about.php"> Acerca de nosotros </a>
+							<li><a href="../about.php"> Acerca de nosotros </a>
 							</li>
 						</ul>
 					</div>

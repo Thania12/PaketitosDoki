@@ -44,7 +44,7 @@
 	<div class="login">
 		<div class="login-screen">
 			<div class="app-title">
-				<h1> Iniciar sesión </h1>
+				<h1> Iniciar sesión (Usuario) </h1>
 			</div>
 			<form method = "POST" action="loginUsuario.php" name="signin-form">
 			<div class="login-form">
@@ -59,7 +59,7 @@
 				</div>
 
 				<button type="submit" class="btn btn-primary btn-large btn-block" name="login" href="altaEnvios.php"> Iniciar sesión </button>
-				<a class="login-link" href="#">¿Olvidaste tu contraseña?</a>
+				
 			</div>
 		</div>
     </div>

@@ -17,7 +17,7 @@
      $_SESSION['Correo'] = $datos->Correo;
      $_SESSION['ID_Viajero']= $datos->ID_Viajero;
      $_SESSION['Nombre']= $datos->Nombre;
-     header('Location: Viajes.php');
+         header('Location: Viajes.php'); 
     }
  ?>
      <a href="funcionesViajero.php"></a>;

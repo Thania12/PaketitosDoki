@@ -83,9 +83,10 @@
         <?php } ?>
         <div class="row" >
             <?php
-            $sentencia = $link->prepare("SELECT * FROM `nuevoenvio`WHERE Estado = 'aprobado' OR Estado='camino' OR Estado = 'entregado'");
+            $sentencia = $link->prepare("SELECT * FROM `nuevoenvio`WHERE Estado = 'aprobado' OR Estado='camino'");
             $sentencia->execute();
             $listaViajes =$sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
            // print_r($listaViajes);
 
             ?>
@@ -134,6 +135,7 @@
 </script>
     <!-- footer-66 -->
     <!-- footer-66 -->
+</br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br>
 	<footer class="w3l-footer-66">
 		<section class="footer-inner-main">
 			<div class="footer-hny-grids py-1">

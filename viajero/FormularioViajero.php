@@ -80,6 +80,7 @@ require_once('../bd/conexion.php');
 		</nav>
 	<!-- //breadcrumbs -->
 	<!-- INFORMACION DE LADO IZQUIERDO-->
+
 	<section class="w3l-specification-6">
 		<div class="specification-6-mian py-5">
 			<div class="container py-lg-4">
@@ -88,6 +89,7 @@ require_once('../bd/conexion.php');
 					<div class="col-lg-5 story-gd">
 					<div class="title-content text-center">
 							<h3 color: #66B2FF> Registrate como viajero </h3>
+							
 							<br> <br> 
 						</div>
 						<div class="title-content text-center">
@@ -223,7 +225,7 @@ require_once('../bd/conexion.php');
 										   <label for="Espacio" class="formulario__label"> </label> 
 										   <input type="submit" id="register"  name="register" value="Registrar" /> 
 										   </div>
-									
+									        <p> Aviso de privacidad <a href="../aviso.php"> Consultar </a> </p>
 										   <p>       ¿Ya tienes un cuenta?<a href="loginV.php"> Iniciar Sesión</a></p>
 											<p class="warnings" id="warnings"></p>   
 											         </div>						
@@ -318,7 +320,7 @@ require_once('../bd/conexion.php');
 									href="https://w3layouts.com"> Bienvenido </a></p>
 						</div>
 						<ul class="columns text-lg-right">
-							<li><a href="#"> Politica de Privacidad </a>
+							<li><a href="../aviso.php"> Aviso de Privacidad </a>
 							</li>
 							<li><a href="../about.php"> Acerca de nosotros </a>
 							</li>
