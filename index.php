@@ -302,112 +302,77 @@
 						<div class="testimonial-content">
 							<div class="testimonial">
 								<div class="testi-des">
-									<div class="test-img"><img src="assets/images/t6.jpg" class="img-fluid" alt="/">
-									</div>
+									<?php
+											$conexion=mysqli_connect("localhost","root","","dokibase3") or
+											die("Problemas con la conexión");
+											$registros=mysqli_query($conexion,"SELECT * from opiniones  WHERE ID_opinion = 1") or 
+											die("Problemas en el select:".mysqli_error($conexion));
+								            $reg=mysqli_fetch_array($registros);
+											$nombre = $reg['Nombre'];	
+											$comentario= $reg['comentario'];
+
+									?> 
 									<div class="peopl">
-										<h3>Armando Santos</h3>
+										<h3><?php echo $nombre; ?></h3>
 										<p class="indentity">Aguascalientes, Ags.</p>
 									</div>
 								</div>
 								<blockquote>
-									<p> Excelente experiencia, todo seguro.</p>
+							
+									<p> 
+										<?php echo $comentario; ?>
+									</p>
 								</blockquote>
 
 							</div>
 						</div>
 					</div>
+					<?php
+					
+					$registros1=mysqli_query($conexion,"SELECT * from opiniones  WHERE ID_opinion = 2") or 
+											die("Problemas en el select:".mysqli_error($conexion));
+								            $reg=mysqli_fetch_array($registros1);
+											$nombre1 = $reg['Nombre'];	
+											$comentario1= $reg['comentario'];?>	
+																
 					<div class="item">
 						<div class="testimonial-content">
 							<div class="testimonial">
 
 								<div class="testi-des">
-									<div class="test-img"><img src="assets/images/t2.jpg" class="img-fluid" alt="/">
-									</div>
 									<div class="peopl">
-										<h3>Sofía Martinez</h3>
-										<p class="indentity">Monterrey, NL</p>
+										<h3><?php echo $nombre1;  ?></h3>
+										<p class="indentity"> Zacatecas </p>
 									</div>
 								</div>
 								<blockquote>
-									<p> Precios bajos.</p>
-								</blockquote>
-
-
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimonial-content">
-							<div class="testimonial">
-
-								<div class="testi-des">
-									<div class="test-img"><img src="assets/images/t2.jpg" class="img-fluid" alt="/">
-									</div>
-									<div class="peopl">
-										<h3>Diana Medina</h3>
-										<p class="indentity">Aguascalientes, Ags</p>
-									</div>
-								</div>
-								<blockquote>
-									<p> La entrega fue rápida y segura. </p>
+									<p> <?php echo $comentario1 ?> </p>
 								</blockquote>
 
 
 							</div>
 						</div>
 					</div>
-					<div class="item">
-						<div class="testimonial-content">
-							<div class="testimonial">
-								<div class="testi-des">
-									<div class="test-img"><img src="assets/images/t1.jpg" class="img-fluid" alt="/">
-									</div>
-									<div class="peopl">
-										<h3>Miguel Camacho</h3>
-										<p class="indentity">CDMX</p>
-									</div>
-								</div>
-								<blockquote>
-									<p> Una experiencia diferente pero muy efectiva.</p>
-								</blockquote>
+					<?php
+					
+					$registros2=mysqli_query($conexion,"SELECT * from opiniones  WHERE ID_opinion = 3") or 
+											die("Problemas en el select:".mysqli_error($conexion));
+								            $reg=mysqli_fetch_array($registros2);
+											$nombre2 = $reg['Nombre'];	
+											$comentario2= $reg['comentario'];?>	
 
-
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimonial-content">
-							<div class="testimonial">
-								<div class="testi-des">
-									<div class="test-img"><img src="assets/images/t2.jpg" class="img-fluid" alt="/">
-									</div>
-									<div class="peopl">
-										<h3>Miriam Montaño</h3>
-										<p class="indentity">Aguascalientes, Ags/p>
-									</div>
-								</div>
-								<blockquote>
-									<p> Buen precio y servicio rápido.</p>
-								</blockquote>
-
-
-							</div>
-						</div>
-					</div>
 					<div class="item">
 						<div class="testimonial-content">
 							<div class="testimonial">
 
 								<div class="testi-des">
-									<div class="test-img"><img src="assets/images/t3.jpg" class="img-fluid" alt="/">
-									</div>
 									<div class="peopl">
-										<h3>Alex Cardona</h3>
-										<p class="indentity">Aguascalientes, Ags</p>
+										<h3><?php echo $nombre2;  ?></h3>
+										<p class="indentity"> CDMX </p>
 									</div>
 								</div>
 								<blockquote>
-									<p> Buen servicio.</p>
+									<p> <?php echo $comentario2 ?> </p>
 								</blockquote>
 
 

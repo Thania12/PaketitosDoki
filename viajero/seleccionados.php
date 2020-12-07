@@ -160,7 +160,7 @@ break;
                                             <option value ="no_entregado"> No Entregado </option>
                                             </select>
     </br> </br>
-                                            <button type="submit" class="btn btn-success" name="Completar" href="misViajes.php"> Iniciar sesión </button>
+                                            <button type="submit" class="btn btn-success" name="Completar" href="misViajes.php"> Aceptar </button>
                                           
     </div> </div> </div> </div> </div> 
  </section>

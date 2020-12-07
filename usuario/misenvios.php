@@ -83,10 +83,15 @@ require_once('../bd/conexion.php');
 			while ($reg=mysqli_fetch_array($registros))
 			{
                 if($reg['Estado']=='entregado'){
-                    echo '<h6 style="text-center"> El paquete esta entregado en la sucursal de su Estado Destino,  Consulte: <a href="sucursales.php"> Dirección de sucursales </a> </h6>';
+					echo '<h6 style="text-center"> El paquete esta entregado en la sucursal de su Estado Destino,  Consulte: <a href="sucursales.php"> Dirección de sucursales </a> </h6>';
+					?> </br> </br> <?php 
+					echo '<a href="opiniones.php"> Califique el servicio </a>';
                  } else{
+					?> </br> </br> <?php 
                     echo '<h6 style="text-center"> Cuando el estado de su paquete este Entregado, Consulte: <a href="sucursales.php"> Dirección de sucursales </a> </h6>';
-                 }
+				 }
+				 
+				 ?> </br> </br> <?php 
             echo '
             <table class="table table-light table-bordered" style="center">  
             <tbody>
@@ -109,7 +114,9 @@ require_once('../bd/conexion.php');
             
             </tbody>
             </table>
-            </div>';
+			</div>
+			
+			';
 			}
 		     
 			mysqli_close($conexion);
