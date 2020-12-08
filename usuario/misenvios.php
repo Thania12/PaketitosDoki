@@ -71,12 +71,14 @@ require_once('../bd/conexion.php');
 		</nav>
 		<br>
 
+		
+
              <?php
 			$conexion=mysqli_connect("localhost","root","","dokibase3") or
 			die("Problemas con la conexión");
-            $id_cliente = isset($_SESSION['ID_Cliente']) ? $_SESSION['ID_Cliente'] : '';
+			 $id_cliente = isset($_SESSION['ID_Cliente']) ? $_SESSION['ID_Cliente'] : '';
 			//Aqui se le tiene que agregar el ID del usuario logueado en un where
-			$registros=mysqli_query($conexion,"SELECT * from nuevoenvio  WHERE ID_Cliente = $id_cliente AND Estado ='aprobado' OR Estado='camino' OR Estado='entregado'") or 
+				$registros=mysqli_query($conexion,"SELECT * from nuevoenvio  WHERE ID_Cliente = $id_cliente") or 
 			die("Problemas en el select:".mysqli_error($conexion));
 
 			
